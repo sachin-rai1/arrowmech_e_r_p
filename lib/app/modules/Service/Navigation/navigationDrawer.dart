@@ -32,7 +32,7 @@ class ServiceNavigationDrawer extends StatelessWidget {
                       onTap: () {
                         Get.back();
                         Get.toNamed(Routes.SERVICE_TRIP);
-                      }),
+                    }),
                   createDrawerBodyItem(
                       image: "assets/icons/Graph.png",
                       text: 'Reference',

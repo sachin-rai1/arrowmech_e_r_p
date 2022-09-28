@@ -48,39 +48,39 @@ class LeadNavigationDrawer extends StatelessWidget {
                         Get.toNamed(Routes.TARGET);
                       }),
                   createDrawerBodyItem(
-                      image: "assets/icons/Graph.png",
+                      iconData: Icons.book_outlined,
                       text: 'Reference',
                       onTap: () {
                         Get.back();
                         Get.toNamed(Routes.REFERENCE);
                       }),
                   createDrawerBodyItem(
-                      image: "assets/icons/Graph.png",
+                      iconData: Icons.logout,
                       text: 'Log Out',
                       onTap: () {
                         Get.defaultDialog(
-                            // title: "Are You Sure Want to Logout ?",
-                            content: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: [
-                                  Text("Are You Sure Want to Logout ?"),
-                                  SizedBox(height: 20,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            LoginController.logout();
-                                          },
-                                          child: Text("Yes" , style: TextStyle(
-                                            fontFamily: Constants.outFitMedium,
-                                          ),) ,
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Constants.primaryColor
-                                      ),),
-                                      SizedBox(width: 20,),
-                                      ElevatedButton(
+                            title: "!! Alert !!",
+                            content: Column(
+                              children: [
+                                Text("Are You Sure Want to Logout ?"),
+                                SizedBox(height: 20,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          LoginController.logout();
+                                        },
+                                        child: Text("Yes" , style: TextStyle(
+                                          fontFamily: Constants.outFitMedium,
+                                        ),) ,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Constants.primaryColor
+                                    ),),
+                                    SizedBox(width: 20,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right : 10),
+                                      child: ElevatedButton(
                                           onPressed: () {
                                             Get.back();
                                           },
@@ -91,11 +91,11 @@ class LeadNavigationDrawer extends StatelessWidget {
                                           ),) ,
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: Constants.secondaryColor
-                                        ),)
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                        ),),
+                                    )
+                                  ],
+                                ),
+                              ],
                             ));
                       }),
                 ],

@@ -2,7 +2,8 @@ import 'package:arrowmech_e_r_p/app/data/Constant.dart';
 import 'package:flutter/material.dart';
 
 Widget createDrawerBodyItem({
-  required String image,
+  String ? image,
+  IconData ? iconData,
   required String text,
   required GestureTapCallback onTap,
 }) {
@@ -11,11 +12,13 @@ Widget createDrawerBodyItem({
     child: ListTile(
       title: Row(
         children: <Widget>[
+          (image != null)?
           Image.asset(
             image,
             height: 28,
             width: 28,
-          ),
+            color: Colors.black,
+          ):Icon(iconData , color: Colors.black),
           Padding(
             padding: const EdgeInsets.only(left: 10.0),
             child: Text(

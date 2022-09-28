@@ -69,48 +69,44 @@ class ManagerNavigationDrawer extends StatelessWidget {
                         Get.toNamed(Routes.MANAGE_SERVICE);
                       }),
                   createDrawerBodyItem(
-
                       iconData: Icons.logout,
                       text: 'Log Out',
                       onTap: () {
                         Get.defaultDialog(
-                            // title: "Are You Sure Want to Logout ?",
-                            content: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: [
-                                  Text("Are You Sure Want to Logout ?"),
-                                  SizedBox(height: 20,),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            LoginController.logout();
-                                          },
-                                          child: Text("Yes" , style: TextStyle(
-                                            fontFamily: Constants.outFitMedium,
-                                          ),) ,
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Constants.primaryColor
-                                      ),),
-                                      SizedBox(width: 20,),
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            Get.back();
-                                          },
-                                          child: Text("No" , style: TextStyle(
-                                            fontFamily: Constants.outFitMedium,
-                                            color: Colors.grey,
+                            title: "!! Alert !! ",
+                            content: Column(
+                              children: [
+                                Text("Are You Sure Want to Logout ?"),
+                                SizedBox(height: 20,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          LoginController.logout();
+                                        },
+                                        child: Text("Yes" , style: TextStyle(
+                                          fontFamily: Constants.outFitMedium,
+                                        ),) ,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Constants.primaryColor
+                                    ),),
+                                    SizedBox(width: 20,),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          Get.back();
+                                        },
+                                        child: Text("No" , style: TextStyle(
+                                          fontFamily: Constants.outFitMedium,
+                                          color: Colors.grey,
 
-                                          ),) ,
-                                        style: ElevatedButton.styleFrom(
-                                            backgroundColor: Constants.secondaryColor
-                                        ),)
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                        ),) ,
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor: Constants.secondaryColor
+                                      ),)
+                                  ],
+                                ),
+                              ],
                             ));
                       }),
                 ],

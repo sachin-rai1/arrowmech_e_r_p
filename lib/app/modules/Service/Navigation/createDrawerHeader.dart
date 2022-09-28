@@ -23,7 +23,7 @@ Widget createDrawerHeader() {
                 width: 10,
               ),
               Text(
-                "Sales",
+                "Service",
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: Constants.outFit,

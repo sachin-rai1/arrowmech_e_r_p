@@ -27,14 +27,14 @@ class ProductionNavigationDrawer extends StatelessWidget {
                         Get.toNamed(Routes.PRO_TASK_LIST);
                       }),
                   createDrawerBodyItem(
-                      image: "assets/icons/Graph.png",
+                      iconData: Icons.book_outlined,
                       text: 'Reference',
                       onTap: () {
                         Get.back();
                         Get.toNamed(Routes.PRO_REFERENCE);
                       }),
                   createDrawerBodyItem(
-                      image: "assets/icons/Graph.png",
+                      iconData: Icons.logout,
                       text: 'Log Out',
                       onTap: () {
                         Get.defaultDialog(
