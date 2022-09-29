@@ -18,10 +18,6 @@ class ReferenceController extends GetxController {
   Future<void> videoPlayer() async {
     videoPlayerController = VideoPlayerController.network(
         'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8');
-    // Initialize the controller and store the Future for later use.
-    // initializeVideoPlayerFuture = videoPlayerController.initialize();
-    // Use the controller to loop the video.
-    // videoPlayerController.setLooping(true);
     await Future.wait([videoPlayerController.initialize()]);
     chewieController = ChewieController(
       videoPlayerController: videoPlayerController,

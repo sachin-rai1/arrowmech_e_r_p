@@ -5,39 +5,15 @@ import 'package:intl/intl.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
 
 import '../../../../data/Constant.dart';
-import '../../ManagerNavigation/navigationDrawer.dart';
+
 import '../controllers/manage_production_controller.dart';
 
 class ManageProductionView extends GetView<ManageProductionController> {
   @override
   Widget build(BuildContext context) {
+    Get.put(ManageProductionController());
     final w = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer: ManagerNavigationDrawer(),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: ClipRRect(
-          child: Image.asset(
-            'assets/images/mainLogo.png',
-            height: 50,
-            width: 124,
-          ),
-        ),
-        titleSpacing: 00.0,
-        centerTitle: true,
-        elevation: 0,
-        leading: Builder(builder: (context) {
-          return IconButton(
-            iconSize: 41.19,
-            icon: const Icon(Icons.menu),
-            color: Constants.primaryColor,
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-          );
-        }),
-      ),
       body: Center(
         child: Column(
           children: [

@@ -47,19 +47,14 @@ class LoginView extends GetView<LoginController> {
                 const SizedBox(
                   height: 80,
                 ),
-                Text(
-                  "Welcome To",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: Constants.outFit),
-                ),
                 Container(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: EdgeInsets.only(left: 25),
+                  alignment: Alignment.topLeft,
                   child: Text(
-                    "Flow meter Monitoring",
+                    "Welcome To Arrowmech",
                     style: TextStyle(
-                        fontFamily: Constants.outfitBold, fontSize: 34),
+                        fontSize: 25,
+                        fontFamily: Constants.outfitBold),
                   ),
                 ),
                 const SizedBox(
@@ -71,7 +66,6 @@ class LoginView extends GetView<LoginController> {
                   child: Text(
                     "Email",
                     style: TextStyle(
-                        fontWeight: FontWeight.bold,
                         fontSize: 14,
                         letterSpacing: 0.5,
                         fontFamily: Constants.outfitBold),

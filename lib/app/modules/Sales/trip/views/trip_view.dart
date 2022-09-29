@@ -10,31 +10,31 @@ class TripView extends GetView<TripController> {
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
     return Scaffold(
-      drawer: LeadNavigationDrawer(),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: ClipRRect(
-          child: Image.asset(
-            'assets/images/mainLogo.png',
-            height: 50,
-            width: 124,
-          ),
-        ),
-        titleSpacing: 00.0,
-        centerTitle: true,
-        elevation: 0,
-        leading: Builder(builder: (context) {
-          return IconButton(
-            iconSize: 41.19,
-            icon: const Icon(Icons.menu),
-            color: Constants.primaryColor,
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-          );
-        }),
-      ),
+      // drawer: LeadNavigationDrawer(),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   title: ClipRRect(
+      //     child: Image.asset(
+      //       'assets/images/mainLogo.png',
+      //       height: 50,
+      //       width: 124,
+      //     ),
+      //   ),
+      //   titleSpacing: 00.0,
+      //   centerTitle: true,
+      //   elevation: 0,
+      //   leading: Builder(builder: (context) {
+      //     return IconButton(
+      //       iconSize: 41.19,
+      //       icon: const Icon(Icons.menu),
+      //       color: Constants.primaryColor,
+      //       onPressed: () {
+      //         Scaffold.of(context).openDrawer();
+      //       },
+      //       tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+      //     );
+      //   }),
+      // ),
       body: Column(
         children: [
           Padding(
@@ -225,7 +225,7 @@ class TripView extends GetView<TripController> {
   Future newEntry(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     return Get.defaultDialog(
-        title: "Hiii",
+        title: "New Entry",
         content: Column(
           children: [
             Row(
@@ -315,6 +315,9 @@ class TripView extends GetView<TripController> {
                 onPressed: () {},
                 child: Text("Okay"),
                 style: ElevatedButton.styleFrom(
+                  shape: ContinuousRectangleBorder(
+                      borderRadius: BorderRadius.only(bottomLeft:Radius.circular(25) , bottomRight: Radius.circular(0), topLeft: Radius.circular(0),topRight: Radius.circular(25) )
+                  ),
                     backgroundColor: Constants.primaryColor),
               ),
             )

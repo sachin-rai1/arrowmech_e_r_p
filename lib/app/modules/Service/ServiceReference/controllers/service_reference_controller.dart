@@ -1,20 +1,45 @@
+import 'package:chewie/chewie.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:video_player/video_player.dart';
+
+import '../../../../data/Constant.dart';
 
 class ServiceReferenceController extends GetxController {
-  //TODO: Implement ServiceReferenceController
+  late VideoPlayerController videoPlayerController;
+  late Future<void> initializeVideoPlayerFuture;
+  ChewieController? chewieController;
 
-  final count = 0.obs;
   @override
   void onInit() {
+    videoPlayer();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  Future<void> videoPlayer() async {
+    videoPlayerController = VideoPlayerController.network(
+        'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8');
+    // Initialize the controller and store the Future for later use.
+    // initializeVideoPlayerFuture = videoPlayerController.initialize();
+    // Use the controller to loop the video.
+    // videoPlayerController.setLooping(true);
+    await Future.wait([videoPlayerController.initialize()]);
+    chewieController = ChewieController(
+      videoPlayerController: videoPlayerController,
+      autoPlay: false,
+      looping: true,
+      materialProgressColors: ChewieProgressColors(
+          playedColor: Constants.primaryColor,
+          handleColor: Constants.primaryColor,
+          backgroundColor: Colors.white,
+          bufferedColor: Colors.black),
+      autoInitialize: false,
+    );
+    update();
 
-  @override
-  void onClose() {}
-  void increment() => count.value++;
+    void onCLose() {
+      videoPlayerController.dispose();
+      chewieController!.dispose();
+    }
+  }
 }

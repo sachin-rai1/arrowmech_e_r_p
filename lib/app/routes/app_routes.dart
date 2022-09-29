@@ -27,6 +27,11 @@ abstract class Routes {
   static const MANAGE_SERVICE = _Paths.MANAGE_SERVICE;
   static const MANAGE_DASH_BOARD = _Paths.MANAGE_DASH_BOARD;
   static const SPLASH_SCREEN = _Paths.SPLASH_SCREEN;
+  static const ADMIN_DASH_BOARD = _Paths.ADMIN_DASH_BOARD;
+  static const ADMIN_SALES = _Paths.ADMIN_SALES;
+  static const ADMIN_PRODUCTION = _Paths.ADMIN_PRODUCTION;
+  static const ADMIN_SERVICE = _Paths.ADMIN_SERVICE;
+  static const ADMIN_REFERENCE = _Paths.ADMIN_REFERENCE;
 }
 
 abstract class _Paths {
@@ -55,4 +60,9 @@ abstract class _Paths {
   static const MANAGE_SERVICE = '/manage-service';
   static const MANAGE_DASH_BOARD = '/manage-dash-board';
   static const SPLASH_SCREEN = '/splash-screen';
+  static const ADMIN_DASH_BOARD = '/admin-dash-board';
+  static const ADMIN_SALES = '/admin-sales';
+  static const ADMIN_PRODUCTION = '/admin-production';
+  static const ADMIN_SERVICE = '/admin-service';
+  static const ADMIN_REFERENCE = '/admin-reference';
 }

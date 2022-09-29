@@ -9,31 +9,31 @@ class TargetView extends GetView<TargetController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: LeadNavigationDrawer(),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: ClipRRect(
-          child: Image.asset(
-            'assets/images/mainLogo.png',
-            height: 50,
-            width: 124,
-          ),
-        ),
-        titleSpacing: 00.0,
-        centerTitle: true,
-        elevation: 0,
-        leading: Builder(builder: (context) {
-          return IconButton(
-            iconSize: 41.19,
-            icon: const Icon(Icons.menu),
-            color: Constants.primaryColor,
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-            tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-          );
-        }),
-      ),
+      // drawer: LeadNavigationDrawer(),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   title: ClipRRect(
+      //     child: Image.asset(
+      //       'assets/images/mainLogo.png',
+      //       height: 50,
+      //       width: 124,
+      //     ),
+      //   ),
+      //   titleSpacing: 00.0,
+      //   centerTitle: true,
+      //   elevation: 0,
+      //   leading: Builder(builder: (context) {
+      //     return IconButton(
+      //       iconSize: 41.19,
+      //       icon: const Icon(Icons.menu),
+      //       color: Constants.primaryColor,
+      //       onPressed: () {
+      //         Scaffold.of(context).openDrawer();
+      //       },
+      //       tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+      //     );
+      //   }),
+      // ),
       body: Column(
         children: [
           Container(

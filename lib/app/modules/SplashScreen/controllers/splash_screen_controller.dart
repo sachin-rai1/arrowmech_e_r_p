@@ -1,10 +1,15 @@
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminNavigationBar/navigationDrawer.dart';
 import 'package:arrowmech_e_r_p/app/modules/Manager/ManageDashBoard/views/manage_dash_board_view.dart';
+import 'package:arrowmech_e_r_p/app/modules/Manager/ManagerNavigation/navigationDrawer.dart';
 import 'package:arrowmech_e_r_p/app/modules/Production/ProTaskList/views/pro_task_list_view.dart';
+import 'package:arrowmech_e_r_p/app/modules/Sales/Navigation/navigationDrawer.dart';
 import 'package:arrowmech_e_r_p/app/modules/Sales/lead/views/lead_view.dart';
 import 'package:arrowmech_e_r_p/app/modules/Service/ServiceTaskList/views/service_task_list_view.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Production/Navigation/navigationDrawer.dart';
+import '../../Service/Navigation/navigationDrawer.dart';
 import '../../login/views/login_view.dart';
 
 class SplashScreenController extends GetxController {
@@ -15,16 +20,28 @@ class SplashScreenController extends GetxController {
     print(status);
     print(role);
     if (status == true) {
-      if (role == 3) {
-        Future.delayed(Duration(seconds: 2),
-            () => Get.offAll(() => ManageDashBoardView()));
+      if (role == 1) {
+        Future.delayed(Duration(milliseconds: 2500),
+            () => Get.offAll(() => AdminNavigationDrawer()));
+      } else if (role == 2) {
+        Future.delayed(Duration(milliseconds: 2500),
+            () => Get.offAll(() => ManagerNavigationDrawer()));
+      } else if (role == 3) {
+        Future.delayed(Duration(milliseconds: 2500),
+            () => Get.offAll(() => ProductionNavigationDrawer()));
+      } else if (role == 4) {
+        Future.delayed(Duration(milliseconds: 2500),
+            () => Get.offAll(() => SalesNavigationBar()));
+      } else if (role == 5) {
+        Future.delayed(Duration(milliseconds: 2500),
+            () => Get.offAll(() => ServiceNavigationDrawer()));
       } else {
-        Future.delayed(Duration(seconds: 2),
-                () => Get.offAll(() => LoginView()));
+        Future.delayed(
+            Duration(milliseconds: 2500), () => Get.offAll(() => LoginView()));
       }
     } else {
-      Future.delayed(Duration(seconds: 2),
-              () => Get.offAll(() => LoginView()));
+      Future.delayed(
+          Duration(milliseconds: 2500), () => Get.offAll(() => LoginView()));
     }
   }
 

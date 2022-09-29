@@ -1,7 +1,9 @@
 import 'dart:convert';
-import 'package:arrowmech_e_r_p/app/modules/Manager/ManageDashBoard/views/manage_dash_board_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Sales/lead/views/lead_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Service/ServiceTaskList/views/service_task_list_view.dart';
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminNavigationBar/navigationDrawer.dart';
+import 'package:arrowmech_e_r_p/app/modules/Manager/ManagerNavigation/navigationDrawer.dart';
+import 'package:arrowmech_e_r_p/app/modules/Production/Navigation/navigationDrawer.dart';
+import 'package:arrowmech_e_r_p/app/modules/Sales/Navigation/navigationDrawer.dart';
+import 'package:arrowmech_e_r_p/app/modules/Service/Navigation/navigationDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -27,14 +29,12 @@ class LoginController extends GetxController {
     }
   }
 
-
-
   apiLogin(String email, password) async {
     Get.dialog(Center(child: CircularProgressIndicator()));
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? tokenvalue = prefs.getString("token");
     final response = await http.post(
-        Uri.parse('${Constants.connectionString}/login'),
+        Uri.parse('${Constants.connectionString}login'),
         headers: <String, String>{
           'Authorization': 'Bearer $tokenvalue',
         },
@@ -64,18 +64,22 @@ class LoginController extends GetxController {
         );
         // Constants.snackBar("Logged In", "Successfully");
         prefs.setBool("isLoggedIn", true);
-
         if (data['user']['role_type'] == 1) {
-          Get.to(() => ManageDashBoardView());
-        } else if (data['user']['role_type'] == 2) {
-          Get.to(() => ServiceTaskListView());
+          Get.offAll(() => AdminNavigationDrawer());
+        }
+        if (data['user']['role_type'] == 2) {
+          Get.to(() => ManagerNavigationDrawer());
         } else if (data['user']['role_type'] == 3) {
-          Get.offAll(() => LeadView());
+          Get.to(() => ProductionNavigationDrawer());
+        } else if (data['user']['role_type'] == 4) {
+          Get.offAll(() => SalesNavigationBar());
+        } else if (data['user']['role_type'] == 5) {
+          Get.offAll(() => ServiceNavigationDrawer());
         }
       }
       print(data);
       int role = data['user']['role_type'];
-      prefs.setInt("role",role);
+      prefs.setInt("role", role);
       String token = data['token'];
       prefs.setString("token", token);
       print(token);

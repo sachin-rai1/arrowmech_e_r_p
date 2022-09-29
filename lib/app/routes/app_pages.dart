@@ -2,6 +2,16 @@ import 'package:flutter/animation.dart';
 
 import 'package:get/get.dart';
 
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminDashBoard/bindings/admin_dash_board_binding.dart';
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminDashBoard/views/admin_dash_board_view.dart';
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminProduction/bindings/admin_production_binding.dart';
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminProduction/views/admin_production_view.dart';
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminReference/bindings/admin_reference_binding.dart';
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminReference/views/admin_reference_view.dart';
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminSales/bindings/admin_sales_binding.dart';
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminSales/views/admin_sales_view.dart';
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminService/bindings/admin_service_binding.dart';
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminService/views/admin_service_view.dart';
 import 'package:arrowmech_e_r_p/app/modules/SplashScreen/bindings/splash_screen_binding.dart';
 import 'package:arrowmech_e_r_p/app/modules/SplashScreen/views/splash_screen_view.dart';
 
@@ -195,11 +205,37 @@ class AppPages {
       name: _Paths.MANAGE_DASH_BOARD,
       page: () => ManageDashBoardView(),
       binding: ManageDashBoardBinding(),
+      transition: Transition.noTransition,
     ),
     GetPage(
       name: _Paths.SPLASH_SCREEN,
       page: () => SplashScreenView(),
       binding: SplashScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_DASH_BOARD,
+      page: () => AdminDashBoardView(),
+      binding: AdminDashBoardBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_SALES,
+      page: () => AdminSalesView(),
+      binding: AdminSalesBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_PRODUCTION,
+      page: () => AdminProductionView(),
+      binding: AdminProductionBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_SERVICE,
+      page: () => AdminServiceView(),
+      binding: AdminServiceBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_REFERENCE,
+      page: () => AdminReferenceView(),
+      binding: AdminReferenceBinding(),
     ),
   ];
 }
