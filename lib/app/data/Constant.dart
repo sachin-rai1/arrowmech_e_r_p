@@ -11,8 +11,6 @@ class Constants {
   static String outFit = "OutFit";
   static String outFitMedium = "OutFitMedium";
   static String outfitBold = "OutFitBold";
-  static const double padding = 20;
-  static const double avatarRadius = 45;
 
   static showtoast(msg) {
     Fluttertoast.showToast(
