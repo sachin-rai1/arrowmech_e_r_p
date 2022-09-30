@@ -14,6 +14,8 @@ import 'package:arrowmech_e_r_p/app/modules/Admin/AdminService/bindings/admin_se
 import 'package:arrowmech_e_r_p/app/modules/Admin/AdminService/views/admin_service_view.dart';
 import 'package:arrowmech_e_r_p/app/modules/SplashScreen/bindings/splash_screen_binding.dart';
 import 'package:arrowmech_e_r_p/app/modules/SplashScreen/views/splash_screen_view.dart';
+import 'package:arrowmech_e_r_p/app/modules/SwitchUser/bindings/switch_user_binding.dart';
+import 'package:arrowmech_e_r_p/app/modules/SwitchUser/views/switch_user_view.dart';
 
 import '../modules/Manager/ManageDashBoard/bindings/manage_dash_board_binding.dart';
 import '../modules/Manager/ManageDashBoard/views/manage_dash_board_view.dart';
@@ -236,6 +238,11 @@ class AppPages {
       name: _Paths.ADMIN_REFERENCE,
       page: () => AdminReferenceView(),
       binding: AdminReferenceBinding(),
+    ),
+    GetPage(
+      name: _Paths.SWITCH_USER,
+      page: () => SwitchUserView(),
+      binding: SwitchUserBinding(),
     ),
   ];
 }

@@ -1,16 +1,12 @@
 import 'package:arrowmech_e_r_p/app/data/Constant.dart';
 import 'package:arrowmech_e_r_p/app/modules/Admin/AdminReference/views/admin_reference_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Manager/ManageDashBoard/views/manage_dash_board_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Manager/ManageProduction/views/manage_production_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Manager/ManageSales/views/manage_sales_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Manager/ManageService/views/manage_service_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Manager/ManagerLowItemStock/views/manager_low_item_stock_view.dart';
 import 'package:arrowmech_e_r_p/app/modules/Admin/AdminNavigationBar/createDrawerHeader.dart';
-import 'package:arrowmech_e_r_p/app/modules/Manager/ManagerStockItem/views/manager_stock_item_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Manager/ManagerVendors/views/manager_vendors_view.dart';
+import 'package:arrowmech_e_r_p/app/modules/SwitchUser/views/switch_user_view.dart';
 import 'package:arrowmech_e_r_p/app/modules/login/controllers/login_controller.dart';
+import 'package:arrowmech_e_r_p/app/modules/login/views/login_view.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:get/get.dart';
 import '../AdminDashBoard/views/admin_dash_board_view.dart';
 import '../AdminProduction/views/admin_production_view.dart';
@@ -39,11 +35,14 @@ class AdminNavigationDrawer extends GetView {
           ),
           appBar: AppBar(
             backgroundColor: Colors.transparent,
-            title: ClipRRect(
-              child: Image.asset(
-                'assets/images/mainLogo.png',
-                height: 50,
-                width: 124,
+            title: Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: ClipRRect(
+                child: Image.asset(
+                  'assets/images/mainLogo.png',
+                  height: 50,
+                  width: 124,
+                ),
               ),
             ),
             titleSpacing: 00.0,
@@ -60,6 +59,48 @@ class AdminNavigationDrawer extends GetView {
                 tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
               );
             }),
+            actions: <Widget>[
+              GestureDetector(
+                onTap: () {
+                  // Get.toNamed("SwitchUser");
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: SpeedDial(
+                    icon: Icons.account_circle,
+                    iconTheme: IconThemeData(color: Colors.grey[400], size: 50),
+                    direction: SpeedDialDirection.down,
+                    backgroundColor: Colors.transparent,
+                    elevation: 0,
+                    curve: Curves.bounceInOut,
+                    children: [
+                      SpeedDialChild(
+                        child: Icon(Icons.switch_account_outlined,
+                            color: Constants.primaryColor),
+                        backgroundColor: Constants.secondaryColor,
+                        onTap: () => Get.to(() => SwitchUserView()),
+                        label: 'Switch User',
+                        labelStyle: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Constants.primaryColor),
+                        labelBackgroundColor: Constants.secondaryColor,
+                      ),
+                      SpeedDialChild(
+                        child: Icon(Icons.person_add_alt_1,
+                            color: Constants.primaryColor),
+                        backgroundColor: Constants.secondaryColor,
+                        onTap: () => Get.to(()=>LoginView()),
+                        label: 'Add User',
+                        labelStyle: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Constants.primaryColor),
+                        labelBackgroundColor: Constants.secondaryColor,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
           drawer: Drawer(
               backgroundColor: Colors.white,
@@ -106,53 +147,7 @@ class AdminNavigationDrawer extends GetView {
                         iconData: Icons.logout,
                         text: 'Log Out',
                         onTap: () {
-                          Get.defaultDialog(
-                              title: "!! Alert !! ",
-                              content: Column(
-                                children: [
-                                  Text("Are You Sure Want to Logout ?"),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          LoginController.logout();
-                                        },
-                                        child: Text(
-                                          "Yes",
-                                          style: TextStyle(
-                                            fontFamily: Constants.outFitMedium,
-                                          ),
-                                        ),
-                                        style: ElevatedButton.styleFrom(
-                                            backgroundColor:
-                                                Constants.primaryColor),
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Get.back();
-                                        },
-                                        child: Text(
-                                          "No",
-                                          style: TextStyle(
-                                            fontFamily: Constants.outFitMedium,
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                        style: ElevatedButton.styleFrom(
-                                            backgroundColor:
-                                                Constants.secondaryColor),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ));
+                          logout(context);
                         }),
                   ],
                 ),
@@ -160,5 +155,53 @@ class AdminNavigationDrawer extends GetView {
         ),
       ),
     );
+  }
+
+  Future logout(BuildContext context) {
+    return Get.defaultDialog(
+        title: "!! Alert !! ",
+        content: Column(
+          children: [
+            Text("Are You Sure Want to Logout ?"),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    LoginController.logout();
+                  },
+                  child: Text(
+                    "Yes",
+                    style: TextStyle(
+                      fontFamily: Constants.outFitMedium,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Constants.primaryColor),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: Text(
+                    "No",
+                    style: TextStyle(
+                      fontFamily: Constants.outFitMedium,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Constants.secondaryColor),
+                )
+              ],
+            ),
+          ],
+        ));
   }
 }

@@ -21,6 +21,7 @@ dependencies:
   outline_search_bar: 2.3.0
   flutter_html: 2.2.1
   double_back_to_close_app: 2.1.0
+  flutter_speed_dial: 6.0.0
   flutter: 
     sdk: flutter
   flutter_localizations: 

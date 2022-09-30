@@ -13,7 +13,7 @@ import 'package:http/http.dart' as http;
 import '../views/login_view.dart';
 
 class LoginController extends GetxController {
-  late final value = false.obs;
+  late final check = false.obs;
   TextEditingController emailTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
   var storeSession;
@@ -62,8 +62,7 @@ class LoginController extends GetxController {
           msg: 'logged In Successfully',
           backgroundColor: Colors.green,
         );
-        // Constants.snackBar("Logged In", "Successfully");
-        prefs.setBool("isLoggedIn", true);
+
         if (data['user']['role_type'] == 1) {
           Get.offAll(() => AdminNavigationDrawer());
         }
@@ -77,12 +76,26 @@ class LoginController extends GetxController {
           Get.offAll(() => ServiceNavigationDrawer());
         }
       }
+
+
       print(data);
       int role = data['user']['role_type'];
       prefs.setInt("role", role);
+
       String token = data['token'];
       prefs.setString("token", token);
-      print(token);
+
+      int userId = data['user']['id'];
+      prefs.setInt("userId", userId);
+
+      String firstName = data['user']['firstname'];
+      prefs.setString("firstName", firstName);
+
+      String surName = data['user']['surname'];
+      prefs.setString("surName", surName);
+
+      print(firstName);
+      print(surName);
     } else {
       print(response.statusCode);
       Get.back();
@@ -92,4 +105,5 @@ class LoginController extends GetxController {
       );
     }
   }
+
 }

@@ -1,4 +1,3 @@
-import 'package:arrowmech_e_r_p/app/modules/Manager/ManagerNavigation/navigationDrawer.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,6 +10,12 @@ class ManageDashBoardView extends GetView<ManageDashBoardController> {
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar:AppBar(
+        title: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Image.asset("assets/icons/user.png" , height: 50,width: 50,color: Colors.grey,),
+        ),
+      ),
       body: Center(
         child: Column(
           children: [

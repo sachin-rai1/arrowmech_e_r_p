@@ -1,10 +1,6 @@
 import 'package:arrowmech_e_r_p/app/modules/Admin/AdminNavigationBar/navigationDrawer.dart';
-import 'package:arrowmech_e_r_p/app/modules/Manager/ManageDashBoard/views/manage_dash_board_view.dart';
 import 'package:arrowmech_e_r_p/app/modules/Manager/ManagerNavigation/navigationDrawer.dart';
-import 'package:arrowmech_e_r_p/app/modules/Production/ProTaskList/views/pro_task_list_view.dart';
 import 'package:arrowmech_e_r_p/app/modules/Sales/Navigation/navigationDrawer.dart';
-import 'package:arrowmech_e_r_p/app/modules/Sales/lead/views/lead_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Service/ServiceTaskList/views/service_task_list_view.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,10 +12,9 @@ class SplashScreenController extends GetxController {
   Future<void> getState() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var role = prefs.getInt("role");
-    var status = prefs.getBool('isLoggedIn') ?? false;
-    print(status);
+    // var status = prefs.getBool('isLoggedIn') ?? false;
+
     print(role);
-    if (status == true) {
       if (role == 1) {
         Future.delayed(Duration(milliseconds: 2500),
             () => Get.offAll(() => AdminNavigationDrawer()));
@@ -39,10 +34,7 @@ class SplashScreenController extends GetxController {
         Future.delayed(
             Duration(milliseconds: 2500), () => Get.offAll(() => LoginView()));
       }
-    } else {
-      Future.delayed(
-          Duration(milliseconds: 2500), () => Get.offAll(() => LoginView()));
-    }
+
   }
 
   @override

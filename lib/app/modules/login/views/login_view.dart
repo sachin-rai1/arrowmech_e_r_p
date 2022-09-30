@@ -2,11 +2,9 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../data/Constant.dart';
-import '../../Sales/lead/views/lead_view.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  final _formKey = GlobalKey<FormState>();
 
   void validateEmail() {
     final bool isValid = EmailValidator.validate(
@@ -121,9 +119,9 @@ class LoginView extends GetView<LoginController> {
                       child: Obx(()=>
                         Checkbox(
                           shape: const ContinuousRectangleBorder(),
-                          value: controller.value.value,
+                          value: controller.check.value,
                           onChanged: (value) {
-                            controller.value.value = value!;
+                            controller.check.value = value!;
                           },
                           activeColor: Constants.primaryColor,
                         ),

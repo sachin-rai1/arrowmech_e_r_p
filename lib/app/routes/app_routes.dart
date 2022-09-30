@@ -32,6 +32,7 @@ abstract class Routes {
   static const ADMIN_PRODUCTION = _Paths.ADMIN_PRODUCTION;
   static const ADMIN_SERVICE = _Paths.ADMIN_SERVICE;
   static const ADMIN_REFERENCE = _Paths.ADMIN_REFERENCE;
+  static const SWITCH_USER = _Paths.SWITCH_USER;
 }
 
 abstract class _Paths {
@@ -65,4 +66,5 @@ abstract class _Paths {
   static const ADMIN_PRODUCTION = '/admin-production';
   static const ADMIN_SERVICE = '/admin-service';
   static const ADMIN_REFERENCE = '/admin-reference';
+  static const SWITCH_USER = '/switch-user';
 }
