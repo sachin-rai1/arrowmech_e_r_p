@@ -2,6 +2,7 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
+
   static const HOME = _Paths.HOME;
   static const LOGIN = _Paths.LOGIN;
   static const LEAD = _Paths.LEAD;
@@ -33,6 +34,23 @@ abstract class Routes {
   static const ADMIN_SERVICE = _Paths.ADMIN_SERVICE;
   static const ADMIN_REFERENCE = _Paths.ADMIN_REFERENCE;
   static const SWITCH_USER = _Paths.SWITCH_USER;
+  static const ADMIN_MANAGER = _Paths.ADMIN_MANAGER;
+  static const ADMIN_SALES_REPORT = _Paths.ADMIN_SALES_REPORT;
+  static const ADMIN_SALES_TARGET = _Paths.ADMIN_SALES_TARGET;
+  static const ADMIN_SALES_REPORT_DATE_WISE =
+      _Paths.ADMIN_SALES_REPORT + _Paths.ADMIN_SALES_REPORT_DATE_WISE;
+  static const ADMIN_MONTHLY_TARGET =
+      _Paths.ADMIN_SALES_TARGET + _Paths.ADMIN_MONTHLY_TARGET;
+  static const ADMIN_COMPANY_WISE_TARGET =
+      _Paths.ADMIN_SALES_TARGET + _Paths.ADMIN_COMPANY_WISE_TARGET;
+  static const ADMIN_TASK_ALLOCATION =
+      _Paths.ADMIN_MANAGER + _Paths.ADMIN_TASK_ALLOCATION;
+  static const ADMIN_STOCK_ITEM =
+      _Paths.ADMIN_MANAGER + _Paths.ADMIN_STOCK_ITEM;
+  static const ADMIN_LOW_STOCK_ITEM =
+       _Paths.ADMIN_MANAGER + _Paths.ADMIN_LOW_STOCK_ITEM;
+  static const ADMIN_VENDORS =
+       _Paths.ADMIN_MANAGER + _Paths.ADMIN_VENDORS;
 }
 
 abstract class _Paths {
@@ -67,4 +85,14 @@ abstract class _Paths {
   static const ADMIN_SERVICE = '/admin-service';
   static const ADMIN_REFERENCE = '/admin-reference';
   static const SWITCH_USER = '/switch-user';
+  static const ADMIN_MANAGER = '/admin-manager';
+  static const ADMIN_SALES_REPORT = '/admin-sales-report';
+  static const ADMIN_SALES_TARGET = '/admin-sales-target';
+  static const ADMIN_SALES_REPORT_DATE_WISE = '/admin-sales-report-date-wise';
+  static const ADMIN_MONTHLY_TARGET = '/admin-monthly-target';
+  static const ADMIN_COMPANY_WISE_TARGET = '/admin-company-wise-target';
+  static const ADMIN_TASK_ALLOCATION = '/admin-task-allocation';
+  static const ADMIN_STOCK_ITEM = '/admin-stock-item';
+  static const ADMIN_LOW_STOCK_ITEM = '/admin-low-stock-item';
+  static const ADMIN_VENDORS = '/admin-vendors';
 }

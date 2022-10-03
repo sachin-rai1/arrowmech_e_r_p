@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../data/Constant.dart';
 import '../controllers/switch_user_controller.dart';
 

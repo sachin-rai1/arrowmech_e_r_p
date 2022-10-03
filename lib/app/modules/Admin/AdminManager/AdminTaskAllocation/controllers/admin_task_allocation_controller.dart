@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../data/Constant.dart';
+import '../../../../../data/Constant.dart';
 
-class AdminSalesController extends GetxController {
+class AdminTaskAllocationController extends GetxController {
   var selectedDate = DateTime.now().obs;
   Future<void> chooseDate() async {
     DateTime? picked = await showDatePicker(

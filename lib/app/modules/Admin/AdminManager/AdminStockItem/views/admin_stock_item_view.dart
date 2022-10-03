@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../data/Constant.dart';
+import '../../../../../data/Constant.dart';
+import '../controllers/admin_stock_item_controller.dart';
 
-import '../controllers/manager_stock_item_controller.dart';
-
-class ManagerStockItemView extends GetView<ManagerStockItemController> {
+class AdminStockItemView extends GetView<AdminStockItemController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +18,7 @@ class ManagerStockItemView extends GetView<ManagerStockItemController> {
               child: Text(
                 'Items In Stock',
                 style: TextStyle(fontSize: 25 ,
-                fontFamily: Constants.outFitMedium),
+                    fontFamily: Constants.outFitMedium),
               ),
             ),
             Padding(
@@ -32,9 +31,9 @@ class ManagerStockItemView extends GetView<ManagerStockItemController> {
                     children: [
                       Text("Items Name" ,
                         style: TextStyle(
-                        fontSize: 15 ,
-                        fontFamily: Constants.outFitMedium
-                      ),),
+                            fontSize: 15 ,
+                            fontFamily: Constants.outFitMedium
+                        ),),
                       Text("In Stock" ,
                         style: TextStyle(
                             fontSize: 15 ,

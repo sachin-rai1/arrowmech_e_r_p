@@ -4,40 +4,15 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
 
-import '../../../../data/Constant.dart';
-import '../controllers/admin_sales_controller.dart';
+import '../../../../../data/Constant.dart';
+import '../controllers/admin_task_allocation_controller.dart';
 
-class AdminSalesView extends GetView<AdminSalesController> {
+class AdminTaskAllocationView extends GetView<AdminTaskAllocationController> {
   @override
   Widget build(BuildContext context) {
-    Get.put(AdminSalesController());
+    Get.put(AdminTaskAllocationController());
     final w = MediaQuery.of(context).size.width;
     return Scaffold(
-      // drawer: ManagerNavigationDrawer(),
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      //   title: ClipRRect(
-      //     child: Image.asset(
-      //       'assets/images/mainLogo.png',
-      //       height: 50,
-      //       width: 124,
-      //     ),
-      //   ),
-      //   titleSpacing: 00.0,
-      //   centerTitle: true,
-      //   elevation: 0,
-      //   leading: Builder(builder: (context) {
-      //     return IconButton(
-      //       iconSize: 41.19,
-      //       icon: const Icon(Icons.menu),
-      //       color: Constants.primaryColor,
-      //       onPressed: () {
-      //         Scaffold.of(context).openDrawer();
-      //       },
-      //       tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-      //     );
-      //   }),
-      // ),
       body: Center(
         child: Column(
           children: [
@@ -45,7 +20,7 @@ class AdminSalesView extends GetView<AdminSalesController> {
               padding: EdgeInsets.only(left: 10, top: 10),
               alignment: Alignment.topLeft,
               child: Text(
-                'Sales Task Allocation',
+                'Task Allocation',
                 style:
                 TextStyle(fontSize: 22, fontFamily: Constants.outFitMedium),
               ),

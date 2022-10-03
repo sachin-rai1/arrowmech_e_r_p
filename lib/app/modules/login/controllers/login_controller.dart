@@ -20,13 +20,10 @@ class LoginController extends GetxController {
 
   static Future<void> logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var status = prefs.getBool('isLoggedIn') ?? false;
-    print(status);
-    if (status == true) {
-      prefs.clear();
-      Get.offAll(LoginView());
-      Constants.snackBarError("Logged Out", "Successfully");
-    }
+    // var status = prefs.getBool('isLoggedIn') ?? false;
+    prefs.clear();
+    Get.offAll(LoginView());
+    Constants.snackBarError("Logged Out", "Successfully");
   }
 
   apiLogin(String email, password) async {
@@ -77,7 +74,6 @@ class LoginController extends GetxController {
         }
       }
 
-
       print(data);
       int role = data['user']['role_type'];
       prefs.setInt("role", role);
@@ -105,5 +101,4 @@ class LoginController extends GetxController {
       );
     }
   }
-
 }

@@ -2,21 +2,34 @@ import 'package:flutter/animation.dart';
 
 import 'package:get/get.dart';
 
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminDashBoard/bindings/admin_dash_board_binding.dart';
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminDashBoard/views/admin_dash_board_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminProduction/bindings/admin_production_binding.dart';
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminProduction/views/admin_production_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminReference/bindings/admin_reference_binding.dart';
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminReference/views/admin_reference_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminSales/bindings/admin_sales_binding.dart';
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminSales/views/admin_sales_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminService/bindings/admin_service_binding.dart';
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminService/views/admin_service_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/SplashScreen/bindings/splash_screen_binding.dart';
-import 'package:arrowmech_e_r_p/app/modules/SplashScreen/views/splash_screen_view.dart';
-import 'package:arrowmech_e_r_p/app/modules/SwitchUser/bindings/switch_user_binding.dart';
-import 'package:arrowmech_e_r_p/app/modules/SwitchUser/views/switch_user_view.dart';
-
+import '../modules/Admin/AdminDashBoard/bindings/admin_dash_board_binding.dart';
+import '../modules/Admin/AdminDashBoard/views/admin_dash_board_view.dart';
+import '../modules/Admin/AdminManager/AdminLowStockItem/bindings/admin_low_stock_item_binding.dart';
+import '../modules/Admin/AdminManager/AdminLowStockItem/views/admin_low_stock_item_view.dart';
+import '../modules/Admin/AdminManager/AdminStockItem/bindings/admin_stock_item_binding.dart';
+import '../modules/Admin/AdminManager/AdminStockItem/views/admin_stock_item_view.dart';
+import '../modules/Admin/AdminManager/AdminTaskAllocation/bindings/admin_task_allocation_binding.dart';
+import '../modules/Admin/AdminManager/AdminTaskAllocation/views/admin_task_allocation_view.dart';
+import '../modules/Admin/AdminManager/AdminVendors/bindings/admin_vendors_binding.dart';
+import '../modules/Admin/AdminManager/AdminVendors/views/admin_vendors_view.dart';
+import '../modules/Admin/AdminManager/bindings/admin_manager_binding.dart';
+import '../modules/Admin/AdminManager/views/admin_manager_view.dart';
+import '../modules/Admin/AdminProduction/bindings/admin_production_binding.dart';
+import '../modules/Admin/AdminProduction/views/admin_production_view.dart';
+import '../modules/Admin/AdminReference/bindings/admin_reference_binding.dart';
+import '../modules/Admin/AdminReference/views/admin_reference_view.dart';
+import '../modules/Admin/AdminSalesReport/AdminSalesReportDateWise/bindings/admin_sales_report_date_wise_binding.dart';
+import '../modules/Admin/AdminSalesReport/AdminSalesReportDateWise/views/admin_sales_report_date_wise_view.dart';
+import '../modules/Admin/AdminSalesReport/bindings/admin_sales_report_binding.dart';
+import '../modules/Admin/AdminSalesReport/views/admin_sales_report_view.dart';
+import '../modules/Admin/AdminSalesTarget/AdminCompanyWiseTarget/bindings/admin_company_wise_target_binding.dart';
+import '../modules/Admin/AdminSalesTarget/AdminCompanyWiseTarget/views/admin_company_wise_target_view.dart';
+import '../modules/Admin/AdminSalesTarget/AdminMonthlyTarget/bindings/admin_monthly_target_binding.dart';
+import '../modules/Admin/AdminSalesTarget/AdminMonthlyTarget/views/admin_monthly_target_view.dart';
+import '../modules/Admin/AdminSalesTarget/bindings/admin_sales_target_binding.dart';
+import '../modules/Admin/AdminSalesTarget/views/admin_sales_target_view.dart';
+import '../modules/Admin/AdminService/bindings/admin_service_binding.dart';
+import '../modules/Admin/AdminService/views/admin_service_view.dart';
 import '../modules/Manager/ManageDashBoard/bindings/manage_dash_board_binding.dart';
 import '../modules/Manager/ManageDashBoard/views/manage_dash_board_view.dart';
 import '../modules/Manager/ManageProduction/bindings/manage_production_binding.dart';
@@ -57,6 +70,10 @@ import '../modules/Service/ServiceTaskList/bindings/service_task_list_binding.da
 import '../modules/Service/ServiceTaskList/views/service_task_list_view.dart';
 import '../modules/Service/ServiceTrip/bindings/service_trip_binding.dart';
 import '../modules/Service/ServiceTrip/views/service_trip_view.dart';
+import '../modules/SplashScreen/bindings/splash_screen_binding.dart';
+import '../modules/SplashScreen/views/splash_screen_view.dart';
+import '../modules/SwitchUser/bindings/switch_user_binding.dart';
+import '../modules/SwitchUser/views/switch_user_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -220,11 +237,6 @@ class AppPages {
       binding: AdminDashBoardBinding(),
     ),
     GetPage(
-      name: _Paths.ADMIN_SALES,
-      page: () => AdminSalesView(),
-      binding: AdminSalesBinding(),
-    ),
-    GetPage(
       name: _Paths.ADMIN_PRODUCTION,
       page: () => AdminProductionView(),
       binding: AdminProductionBinding(),
@@ -243,6 +255,62 @@ class AppPages {
       name: _Paths.SWITCH_USER,
       page: () => SwitchUserView(),
       binding: SwitchUserBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_MANAGER,
+      page: () => AdminManagerView(),
+      binding: AdminManagerBinding(),
+      children: [
+        GetPage(
+          name: _Paths.ADMIN_TASK_ALLOCATION,
+          page: () => AdminTaskAllocationView(),
+          binding: AdminTaskAllocationBinding(),
+        ),
+        GetPage(
+          name: _Paths.ADMIN_STOCK_ITEM,
+          page: () => AdminStockItemView(),
+          binding: AdminStockItemBinding(),
+        ),
+        GetPage(
+          name: _Paths.ADMIN_LOW_STOCK_ITEM,
+          page: () => AdminLowStockItemView(),
+          binding: AdminLowStockItemBinding(),
+        ),
+        GetPage(
+          name: _Paths.ADMIN_VENDORS,
+          page: () => AdminVendorsView(),
+          binding: AdminVendorsBinding(),
+        ),
+      ],
+    ),
+    GetPage(
+      name: _Paths.ADMIN_SALES_REPORT,
+      page: () => AdminSalesReportView(),
+      binding: AdminSalesReportBinding(),
+      children: [
+        GetPage(
+          name: _Paths.ADMIN_SALES_REPORT_DATE_WISE,
+          page: () => AdminSalesReportDateWiseView(),
+          binding: AdminSalesReportDateWiseBinding(),
+        ),
+      ],
+    ),
+    GetPage(
+      name: _Paths.ADMIN_SALES_TARGET,
+      page: () => AdminSalesTargetView(),
+      binding: AdminSalesTargetBinding(),
+      children: [
+        GetPage(
+          name: _Paths.ADMIN_MONTHLY_TARGET,
+          page: () => AdminMonthlyTargetView(),
+          binding: AdminMonthlyTargetBinding(),
+        ),
+        GetPage(
+          name: _Paths.ADMIN_COMPANY_WISE_TARGET,
+          page: () => AdminCompanyWiseTargetView(),
+          binding: AdminCompanyWiseTargetBinding(),
+        ),
+      ],
     ),
   ];
 }
