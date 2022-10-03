@@ -12,7 +12,7 @@ class ProductionNavigationDrawer extends GetView {
   final RxInt currentPages = 0.obs;
   final List getPages = [
     ProTaskListView(),
-    ProReferenceView()
+    ProReferenceView(),
   ];
   @override
   Widget build(BuildContext context) {

@@ -159,7 +159,7 @@ class AdminServiceView extends GetView<AdminServiceController> {
                   ),
                 ),
               );
-            }))
+            })),
           ],
         ),
       ),

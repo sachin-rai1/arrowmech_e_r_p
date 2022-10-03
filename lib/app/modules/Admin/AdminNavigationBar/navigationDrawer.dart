@@ -33,8 +33,8 @@ class AdminNavigationDrawer extends GetView {
     AdminProductionView(),
     AdminServiceView(),
     AdminReferenceView(),
-
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -130,22 +130,34 @@ class AdminNavigationDrawer extends GetView {
                       data: Theme.of(context)
                           .copyWith(dividerColor: Colors.transparent),
                       child: ExpansionTile(
+                        trailing: Container(
+                          width: 155,
+                          padding: EdgeInsets.only(top: 10),
+                          alignment: Alignment.topRight,
+                          child: Icon(Icons.arrow_drop_down),
+                        ),
+                        iconColor: Constants.primaryColor,
                         childrenPadding: EdgeInsets.symmetric(horizontal: 75),
                         expandedAlignment: Alignment.topLeft,
                         tilePadding: EdgeInsets.only(right: 20),
                         title: createDrawerBodyItem(
                             image: "assets/icons/Graph.png",
                             text: "Sales",
-                            onTap: () {
-
-                            }),
-                        children: [salesList(context)],
+                            onTap: () => {}),
+                        children: <Widget>[salesList(context)],
                       ),
                     ),
                     Theme(
                       data: Theme.of(context)
                           .copyWith(dividerColor: Colors.transparent),
                       child: ExpansionTile(
+                        iconColor: Constants.primaryColor,
+                        trailing: Container(
+                          width: 120,
+                          padding: EdgeInsets.only(top: 10),
+                          alignment: Alignment.topRight,
+                          child: Icon(Icons.arrow_drop_down),
+                        ),
                         expandedAlignment: Alignment.topLeft,
                         tilePadding: EdgeInsets.only(right: 20),
                         title: createDrawerBodyItem(
@@ -153,14 +165,11 @@ class AdminNavigationDrawer extends GetView {
                             text: 'Manager',
                             onTap: () {}),
                         childrenPadding: EdgeInsets.symmetric(horizontal: 75),
-                        children: [
-                          managerList(context)
-                        ],
+                        children: [managerList(context)],
                       ),
                     ),
                     createDrawerBodyItem(
                         image: "assets/icons/precision.png",
-
                         text: 'Production',
                         onTap: () {
                           Get.back();
@@ -193,6 +202,7 @@ class AdminNavigationDrawer extends GetView {
       ),
     );
   }
+
   Future logout(BuildContext context) {
     return Get.defaultDialog(
         title: "!! Alert !! ",
@@ -240,6 +250,7 @@ class AdminNavigationDrawer extends GetView {
           ],
         ));
   }
+
   Widget salesList(BuildContext context) {
     return Column(children: [
       GestureDetector(
@@ -262,6 +273,7 @@ class AdminNavigationDrawer extends GetView {
       )
     ]);
   }
+
   Widget managerList(BuildContext context) {
     return Column(children: [
       GestureDetector(
@@ -278,7 +290,7 @@ class AdminNavigationDrawer extends GetView {
         height: 10,
       ),
       GestureDetector(
-        onTap: (){
+        onTap: () {
           Get.back();
           currentPages.value = 4;
         },
@@ -292,9 +304,10 @@ class AdminNavigationDrawer extends GetView {
         height: 10,
       ),
       GestureDetector(
-        onTap: (){
+        onTap: () {
           Get.back();
-          currentPages.value = 5;},
+          currentPages.value = 5;
+        },
         child: Container(
             alignment: Alignment.topLeft,
             child: Text(
@@ -305,7 +318,7 @@ class AdminNavigationDrawer extends GetView {
         height: 10,
       ),
       GestureDetector(
-        onTap: (){
+        onTap: () {
           Get.back();
           currentPages.value = 6;
         },
