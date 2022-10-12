@@ -130,20 +130,12 @@ class AdminNavigationDrawer extends GetView {
                       data: Theme.of(context)
                           .copyWith(dividerColor: Colors.transparent),
                       child: ExpansionTile(
-                        trailing: Container(
-                          width: 155,
-                          padding: EdgeInsets.only(top: 10),
-                          alignment: Alignment.topRight,
-                          child: Icon(Icons.arrow_drop_down),
-                        ),
                         iconColor: Constants.primaryColor,
                         childrenPadding: EdgeInsets.symmetric(horizontal: 75),
                         expandedAlignment: Alignment.topLeft,
                         tilePadding: EdgeInsets.only(right: 20),
                         title: createDrawerBodyItem(
-                            image: "assets/icons/Graph.png",
-                            text: "Sales",
-                            onTap: () => {}),
+                            image: "assets/icons/Graph.png", text: "Sales"),
                         children: <Widget>[salesList(context)],
                       ),
                     ),
@@ -152,18 +144,11 @@ class AdminNavigationDrawer extends GetView {
                           .copyWith(dividerColor: Colors.transparent),
                       child: ExpansionTile(
                         iconColor: Constants.primaryColor,
-                        trailing: Container(
-                          width: 120,
-                          padding: EdgeInsets.only(top: 10),
-                          alignment: Alignment.topRight,
-                          child: Icon(Icons.arrow_drop_down),
-                        ),
                         expandedAlignment: Alignment.topLeft,
                         tilePadding: EdgeInsets.only(right: 20),
                         title: createDrawerBodyItem(
                             image: "assets/icons/ic_sharp-manage-accounts.png",
-                            text: 'Manager',
-                            onTap: () {}),
+                            text: 'Manager'),
                         childrenPadding: EdgeInsets.symmetric(horizontal: 75),
                         children: [managerList(context)],
                       ),
@@ -258,7 +243,10 @@ class AdminNavigationDrawer extends GetView {
             Get.back();
             currentPages.value = 1;
           },
-          child: Text("Monthly Sales Report")),
+          child: Text(
+            "Monthly Sales Report",
+            style: TextStyle(fontSize: 18, fontFamily: Constants.outFit),
+          )),
       SizedBox(
         height: 10,
       ),
@@ -267,7 +255,10 @@ class AdminNavigationDrawer extends GetView {
             Get.back();
             currentPages.value = 2;
           },
-          child: Text("Monthly Sales Target")),
+          child: Text(
+            "Monthly Sales Target",
+            style: TextStyle(fontSize: 18, fontFamily: Constants.outFit),
+          )),
       SizedBox(
         height: 15,
       )
@@ -285,6 +276,7 @@ class AdminNavigationDrawer extends GetView {
               alignment: Alignment.topLeft,
               child: Text(
                 "Task Allocation",
+                style: TextStyle(fontSize: 18, fontFamily: Constants.outFit),
               ))),
       SizedBox(
         height: 10,
@@ -298,6 +290,7 @@ class AdminNavigationDrawer extends GetView {
             alignment: Alignment.topLeft,
             child: Text(
               "Stock Items",
+              style: TextStyle(fontSize: 18, fontFamily: Constants.outFit),
             )),
       ),
       SizedBox(
@@ -312,6 +305,7 @@ class AdminNavigationDrawer extends GetView {
             alignment: Alignment.topLeft,
             child: Text(
               "Vendors",
+              style: TextStyle(fontSize: 18, fontFamily: Constants.outFit),
             )),
       ),
       SizedBox(
@@ -326,6 +320,7 @@ class AdminNavigationDrawer extends GetView {
             alignment: Alignment.topLeft,
             child: Text(
               "Low Stock Item",
+              style: TextStyle(fontSize: 18, fontFamily: Constants.outFit),
             )),
       ),
       SizedBox(

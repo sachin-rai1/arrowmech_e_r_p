@@ -16,7 +16,6 @@ class LoginController extends GetxController {
   late final check = false.obs;
   TextEditingController emailTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
-  var storeSession;
 
   static Future<void> logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

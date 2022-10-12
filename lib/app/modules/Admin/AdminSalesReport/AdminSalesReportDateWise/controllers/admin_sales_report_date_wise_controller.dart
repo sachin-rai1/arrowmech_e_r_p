@@ -1,6 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AdminSalesReportDateWiseController extends GetxController {
+
+  RxString address = ''.obs;
+  final TextEditingController mapController = TextEditingController();
+  RxString autoCompletePlace = ''.obs;
+
   final List<String> status = [
     'Successful',
     'Waiting for Client Respones',
@@ -10,6 +16,7 @@ class AdminSalesReportDateWiseController extends GetxController {
 
   ].obs;
   final selected = "".obs;
-
   var date = Get.arguments;
+
+
 }

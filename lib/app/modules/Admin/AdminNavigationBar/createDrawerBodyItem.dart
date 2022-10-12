@@ -5,7 +5,7 @@ Widget createDrawerBodyItem({
   String? image,
   IconData? iconData,
   required String text,
-  required GestureTapCallback onTap,
+  GestureTapCallback ? onTap,
 }) {
   return Padding(
     padding: EdgeInsets.all(0),

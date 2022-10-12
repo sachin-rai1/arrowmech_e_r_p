@@ -9,6 +9,8 @@ class SwitchUserView extends GetView<SwitchUserController> {
     Get.put(SwitchUserController());
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+
         backgroundColor: Colors.transparent,
         title: Padding(
           padding: const EdgeInsets.only(top: 15),
@@ -20,7 +22,6 @@ class SwitchUserView extends GetView<SwitchUserController> {
             ),
           ),
         ),
-        titleSpacing: 00.0,
         centerTitle: true,
         elevation: 0,
       ),

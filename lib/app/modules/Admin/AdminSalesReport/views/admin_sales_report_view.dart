@@ -15,7 +15,8 @@ class AdminSalesReportView extends GetView<AdminSalesReportController> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 15, right: 10, left: 10),
+            padding:
+                const EdgeInsets.only(top: 15, right: 10, left: 10, bottom: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -45,7 +46,7 @@ class AdminSalesReportView extends GetView<AdminSalesReportController> {
                           width: 5,
                         ),
                         Obx(
-                              () => Text(
+                          () => Text(
                             DateFormat.MMMM()
                                 .format(controller.selectedDate.value)
                                 .toString(),
@@ -78,8 +79,9 @@ class AdminSalesReportView extends GetView<AdminSalesReportController> {
               child: GestureDetector(
                 onTap: () {
                   Get.to(
-                      arguments: controller.selectedDate.value,
-                      AdminSalesReportDateWiseView());
+                    () => AdminSalesReportDateWiseView(),
+                    arguments: controller.selectedDate.value,
+                  );
                 },
                 child: Card(
                     shape: ContinuousRectangleBorder(
@@ -91,13 +93,28 @@ class AdminSalesReportView extends GetView<AdminSalesReportController> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image.asset(
-                            "assets/icons/user.png",
-                            height: 30,
-                            width: 30,
+                          Icon(
+                            Icons.account_circle,
+                            color: Colors.grey[400],
+                            size: 35,
                           ),
-                          Text("Company Name"),
-                          Icon(Icons.play_arrow)
+                          Text(
+                            "Company Name",
+                            style: TextStyle(
+                                fontFamily: Constants.outFitMedium,
+                                fontSize: 15),
+                          ),
+                          Obx(
+                            () => Text(
+                              DateFormat.MMMM()
+                                  .format(controller.selectedDate.value)
+                                  .toString(),
+                              style: TextStyle(
+                                fontFamily: Constants.outFit,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     )),
