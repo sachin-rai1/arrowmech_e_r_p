@@ -187,7 +187,6 @@ class AdminNavigationDrawer extends GetView {
       ),
     );
   }
-
   Future logout(BuildContext context) {
     return Get.defaultDialog(
         title: "!! Alert !! ",
@@ -235,7 +234,6 @@ class AdminNavigationDrawer extends GetView {
           ],
         ));
   }
-
   Widget salesList(BuildContext context) {
     return Column(children: [
       GestureDetector(
@@ -264,7 +262,6 @@ class AdminNavigationDrawer extends GetView {
       )
     ]);
   }
-
   Widget managerList(BuildContext context) {
     return Column(children: [
       GestureDetector(

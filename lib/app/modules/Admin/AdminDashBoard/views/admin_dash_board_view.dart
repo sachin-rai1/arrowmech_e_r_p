@@ -1,16 +1,13 @@
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminNavigationBar/navigationDrawer.dart';
+import 'package:arrowmech_e_r_p/app/modules/Admin/AdminSalesTarget/views/admin_sales_target_view.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../../../../data/Constant.dart';
-
 import '../controllers/admin_dash_board_controller.dart';
-
 class AdminDashBoardView extends GetView<AdminDashBoardController> {
   @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
+    final spaceBetween = MainAxisAlignment.spaceBetween;
     return Scaffold(
       body: Center(
         child: Column(
@@ -25,14 +22,14 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: spaceBetween,
               children: [
                 Container(
                   padding: EdgeInsets.only(
                     top: 10,
                     left: 10,
                   ),
-                  width: w/2.05,
+                  width: w / 2.05,
                   child: Card(
                     color: Colors.grey[200],
                     shape: ContinuousRectangleBorder(
@@ -89,13 +86,15 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
                             height: 25,
                             padding: const EdgeInsets.only(left: 10),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.to(AdminSalesTargetView());
+                              },
                               child: Text("View Task"),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Constants.primaryColor,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -177,7 +176,7 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: spaceBetween,
               children: [
                 Container(
                   padding: EdgeInsets.only(
@@ -188,7 +187,7 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
                   child: Card(
                     color: Colors.grey[200],
                     shape: ContinuousRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(20)),
                     child: Container(
                       padding: const EdgeInsets.only(bottom: 25, top: 10),
                       child: Column(
@@ -253,11 +252,11 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
                     top: 6,
                     right: 10,
                   ),
-                  width: w /2,
+                  width: w / 2,
                   child: Card(
                     color: Colors.grey[200],
                     shape: ContinuousRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(20)),
                     child: Container(
                       padding: const EdgeInsets.only(bottom: 25, top: 10),
                       child: Column(
@@ -311,7 +310,7 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
                                 backgroundColor: Constants.primaryColor,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -325,3 +324,5 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
     );
   }
 }
+
+
