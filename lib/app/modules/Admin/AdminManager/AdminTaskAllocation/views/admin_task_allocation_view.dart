@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+
 import 'package:outline_search_bar/outline_search_bar.dart';
 
 import '../../../../../data/Constant.dart';
+
 import '../controllers/admin_task_allocation_controller.dart';
 
 class AdminTaskAllocationView extends GetView<AdminTaskAllocationController> {

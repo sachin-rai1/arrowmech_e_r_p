@@ -5,19 +5,17 @@ import '../../../data/Constant.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-
   void validateEmail() {
-    final bool isValid = EmailValidator.validate(
-        controller.emailTextController.text.trim());
+    final bool isValid =
+        EmailValidator.validate(controller.emailTextController.text.trim());
     if (isValid) {
-        controller.apiLogin(
-            controller.emailTextController.text,
-            controller.passwordTextController.text);
-
+      controller.apiLogin(controller.emailTextController.text,
+          controller.passwordTextController.text);
     } else {
       Constants.snackBarError("Error", "Invalid mail");
     }
   }
+
   @override
   Widget build(BuildContext context) {
     Get.put(LoginController());
@@ -51,8 +49,7 @@ class LoginView extends GetView<LoginController> {
                   child: Text(
                     "Welcome To Arrowmech",
                     style: TextStyle(
-                        fontSize: 25,
-                        fontFamily: Constants.outfitBold),
+                        fontSize: 25, fontFamily: Constants.outfitBold),
                   ),
                 ),
                 const SizedBox(
@@ -74,8 +71,9 @@ class LoginView extends GetView<LoginController> {
                       padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: TextFormField(
                         validator: (value) =>
-                        value!.isEmpty ? 'Email Required' : null,
+                            value!.isEmpty ? 'Email Required' : null,
                         controller: controller.emailTextController,
+                        // controller: controller.emailTextController,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -99,7 +97,7 @@ class LoginView extends GetView<LoginController> {
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: TextFormField(
                     validator: (value) =>
-                    value!.isEmpty ? 'Password Required' : null,
+                        value!.isEmpty ? 'Password Required' : null,
                     controller: controller.passwordTextController,
                     obscureText: true,
                     decoration: InputDecoration(
@@ -116,8 +114,8 @@ class LoginView extends GetView<LoginController> {
                   children: [
                     Container(
                       padding: const EdgeInsets.only(left: 30),
-                      child: Obx(()=>
-                        Checkbox(
+                      child: Obx(
+                        () => Checkbox(
                           shape: const ContinuousRectangleBorder(),
                           value: controller.check.value,
                           onChanged: (value) {

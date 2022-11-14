@@ -38,152 +38,150 @@ class AdminNavigationDrawer extends GetView {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: GestureDetector(
-        child: Scaffold(
-          body: DoubleBackToCloseApp(
-            snackBar: const SnackBar(content: Text('Tap back again to leave')),
-            child: Obx(() => getPages[currentPages.value]),
+      child: Scaffold(
+        body: DoubleBackToCloseApp(
+          snackBar: const SnackBar(content: Text('Tap back again to leave')),
+          child: Obx(() => getPages[currentPages.value]),
+        ),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: Padding(
+            padding: const EdgeInsets.only(top: 15),
+            child: ClipRRect(
+              child: Image.asset(
+                'assets/images/mainLogo.png',
+                height: 50,
+                width: 124,
+              ),
+            ),
           ),
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            title: Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: ClipRRect(
-                child: Image.asset(
-                  'assets/images/mainLogo.png',
-                  height: 50,
-                  width: 124,
+          titleSpacing: 00.0,
+          centerTitle: true,
+          elevation: 0,
+          leading: Builder(builder: (context) {
+            return IconButton(
+              iconSize: 41.19,
+              icon: const Icon(Icons.menu),
+              color: Constants.primaryColor,
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          }),
+          actions: <Widget>[
+            GestureDetector(
+              onTap: () {
+                // Get.toNamed("SwitchUser");
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: SpeedDial(
+                  icon: Icons.account_circle,
+                  iconTheme: IconThemeData(color: Colors.grey[400], size: 50),
+                  direction: SpeedDialDirection.down,
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  curve: Curves.bounceInOut,
+                  children: [
+                    SpeedDialChild(
+                      child: Icon(Icons.switch_account_outlined,
+                          color: Constants.primaryColor),
+                      backgroundColor: Constants.secondaryColor,
+                      onTap: () => Get.to(() => SwitchUserView()),
+                      label: 'Switch User',
+                      labelStyle: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Constants.primaryColor),
+                      labelBackgroundColor: Constants.secondaryColor,
+                    ),
+                    SpeedDialChild(
+                      child: Icon(Icons.person_add_alt_1,
+                          color: Constants.primaryColor),
+                      backgroundColor: Constants.secondaryColor,
+                      onTap: () => Get.to(() => LoginView()),
+                      label: 'Add User',
+                      labelStyle: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Constants.primaryColor),
+                      labelBackgroundColor: Constants.secondaryColor,
+                    ),
+                  ],
                 ),
               ),
             ),
-            titleSpacing: 00.0,
-            centerTitle: true,
-            elevation: 0,
-            leading: Builder(builder: (context) {
-              return IconButton(
-                iconSize: 41.19,
-                icon: const Icon(Icons.menu),
-                color: Constants.primaryColor,
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-              );
-            }),
-            actions: <Widget>[
-              GestureDetector(
-                onTap: () {
-                  // Get.toNamed("SwitchUser");
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: SpeedDial(
-                    icon: Icons.account_circle,
-                    iconTheme: IconThemeData(color: Colors.grey[400], size: 50),
-                    direction: SpeedDialDirection.down,
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    curve: Curves.bounceInOut,
-                    children: [
-                      SpeedDialChild(
-                        child: Icon(Icons.switch_account_outlined,
-                            color: Constants.primaryColor),
-                        backgroundColor: Constants.secondaryColor,
-                        onTap: () => Get.to(() => SwitchUserView()),
-                        label: 'Switch User',
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Constants.primaryColor),
-                        labelBackgroundColor: Constants.secondaryColor,
-                      ),
-                      SpeedDialChild(
-                        child: Icon(Icons.person_add_alt_1,
-                            color: Constants.primaryColor),
-                        backgroundColor: Constants.secondaryColor,
-                        onTap: () => Get.to(() => LoginView()),
-                        label: 'Add User',
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Constants.primaryColor),
-                        labelBackgroundColor: Constants.secondaryColor,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          drawer: Drawer(
-              backgroundColor: Colors.white,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    createDrawerHeader(),
-                    createDrawerBodyItem(
-                        image: "assets/icons/dashboard.png",
-                        text: 'Admin DashBoard',
-                        onTap: () {
-                          Get.back();
-                          currentPages.value = 0;
-                        }),
-                    Theme(
-                      data: Theme.of(context)
-                          .copyWith(dividerColor: Colors.transparent),
-                      child: ExpansionTile(
-                        iconColor: Constants.primaryColor,
-                        childrenPadding: EdgeInsets.symmetric(horizontal: 75),
-                        expandedAlignment: Alignment.topLeft,
-                        tilePadding: EdgeInsets.only(right: 20),
-                        title: createDrawerBodyItem(
-                            image: "assets/icons/Graph.png", text: "Sales"),
-                        children: <Widget>[salesList(context)],
-                      ),
-                    ),
-                    Theme(
-                      data: Theme.of(context)
-                          .copyWith(dividerColor: Colors.transparent),
-                      child: ExpansionTile(
-                        iconColor: Constants.primaryColor,
-                        expandedAlignment: Alignment.topLeft,
-                        tilePadding: EdgeInsets.only(right: 20),
-                        title: createDrawerBodyItem(
-                            image: "assets/icons/ic_sharp-manage-accounts.png",
-                            text: 'Manager'),
-                        childrenPadding: EdgeInsets.symmetric(horizontal: 75),
-                        children: [managerList(context)],
-                      ),
-                    ),
-                    createDrawerBodyItem(
-                        image: "assets/icons/precision.png",
-                        text: 'Production',
-                        onTap: () {
-                          Get.back();
-                          currentPages.value = 7;
-                        }),
-                    createDrawerBodyItem(
-                        image: "assets/icons/settings.png",
-                        text: 'Service',
-                        onTap: () {
-                          Get.back();
-                          currentPages.value = 8;
-                        }),
-                    createDrawerBodyItem(
-                        iconData: Icons.book_outlined,
-                        text: 'Reference',
-                        onTap: () {
-                          Get.back();
-                          currentPages.value = 9;
-                        }),
-                    createDrawerBodyItem(
-                        iconData: Icons.logout,
-                        text: 'Log Out',
-                        onTap: () {
-                          logout(context);
-                        }),
-                  ],
-                ),
-              )),
+          ],
         ),
+        drawer: Drawer(
+            backgroundColor: Colors.white,
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  createDrawerHeader(),
+                  createDrawerBodyItem(
+                      image: "assets/icons/dashboard.png",
+                      text: 'Admin DashBoard',
+                      onTap: () {
+                        Get.back();
+                        currentPages.value = 0;
+                      }),
+                  Theme(
+                    data: Theme.of(context)
+                        .copyWith(dividerColor: Colors.transparent),
+                    child: ExpansionTile(
+                      iconColor: Constants.primaryColor,
+                      childrenPadding: EdgeInsets.symmetric(horizontal: 75),
+                      expandedAlignment: Alignment.topLeft,
+                      tilePadding: EdgeInsets.only(right: 20),
+                      title: createDrawerBodyItem(
+                          image: "assets/icons/Graph.png", text: "Sales"),
+                      children: <Widget>[salesList(context)],
+                    ),
+                  ),
+                  Theme(
+                    data: Theme.of(context)
+                        .copyWith(dividerColor: Colors.transparent),
+                    child: ExpansionTile(
+                      iconColor: Constants.primaryColor,
+                      expandedAlignment: Alignment.topLeft,
+                      tilePadding: EdgeInsets.only(right: 20),
+                      title: createDrawerBodyItem(
+                          image: "assets/icons/ic_sharp-manage-accounts.png",
+                          text: 'Manager'),
+                      childrenPadding: EdgeInsets.symmetric(horizontal: 75),
+                      children: [managerList(context)],
+                    ),
+                  ),
+                  createDrawerBodyItem(
+                      image: "assets/icons/precision.png",
+                      text: 'Production',
+                      onTap: () {
+                        Get.back();
+                        currentPages.value = 7;
+                      }),
+                  createDrawerBodyItem(
+                      image: "assets/icons/settings.png",
+                      text: 'Service',
+                      onTap: () {
+                        Get.back();
+                        currentPages.value = 8;
+                      }),
+                  createDrawerBodyItem(
+                      iconData: Icons.book_outlined,
+                      text: 'Reference',
+                      onTap: () {
+                        Get.back();
+                        currentPages.value = 9;
+                      }),
+                  createDrawerBodyItem(
+                      iconData: Icons.logout,
+                      text: 'Log Out',
+                      onTap: () {
+                        logout(context);
+                      }),
+                ],
+              ),
+            )),
       ),
     );
   }

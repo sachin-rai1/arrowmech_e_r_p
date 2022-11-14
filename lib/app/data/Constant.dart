@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 
 
 class Constants {
-  static String connectionString ='https://test.readingmonitor.co/api/';
-  static String apiString ='Google_API_Key';
+  static String connectionString ='https://flowmeter.readingmonitor.co/api/';
+  static String apiString ='AIzaSyBBEbCZfiKFgl7iZ9lR05cGR-rF0COAnmg';
   static Color primaryColor = const Color(0xFFC12026);
   static Color secondaryColor = const Color(0xFFF8F8F8);
   static Color textColor = const Color(0xFF083A50);

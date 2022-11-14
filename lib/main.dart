@@ -19,7 +19,7 @@ void main() {
         GlobalWidgetsLocalizations.delegate,
         MonthYearPickerLocalizations.delegate
       ],
-      theme: ThemeData(backgroundColor: Constants.primaryColor),
+      theme: ThemeData(primaryColor: Constants.primaryColor , ),
       initialBinding: LoginBinding(),
     ),
   );

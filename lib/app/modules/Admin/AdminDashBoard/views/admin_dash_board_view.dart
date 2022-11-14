@@ -1,13 +1,17 @@
 import 'package:arrowmech_e_r_p/app/modules/Admin/AdminSalesTarget/views/admin_sales_target_view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:outline_search_bar/outline_search_bar.dart';
 import '../../../../data/Constant.dart';
 import '../controllers/admin_dash_board_controller.dart';
+
 class AdminDashBoardView extends GetView<AdminDashBoardController> {
   @override
   Widget build(BuildContext context) {
-    final w = MediaQuery.of(context).size.width;
-    final spaceBetween = MainAxisAlignment.spaceBetween;
+    Get.put(AdminDashBoardController());
+    // final w = MediaQuery.of(context).size.width;
+    // final spaceBetween = MainAxisAlignment.spaceBetween;
     return Scaffold(
       body: Center(
         child: Column(
@@ -16,307 +20,102 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
               padding: EdgeInsets.only(left: 15, top: 15),
               alignment: Alignment.topLeft,
               child: Text(
-                "DashBoard",
+                "Dashboard",
                 style:
-                    TextStyle(fontSize: 25, fontFamily: Constants.outFitMedium),
+                    TextStyle(fontSize: 18, fontFamily: Constants.outfitBold),
               ),
             ),
-            Row(
-              mainAxisAlignment: spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 10,
-                    left: 10,
-                  ),
-                  width: w / 2.05,
-                  child: Card(
-                    color: Colors.grey[200],
-                    shape: ContinuousRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    // shape: OutlineInputBorder(
-                    //     borderSide: BorderSide(color: Constants.secondaryColor),
-                    //     borderRadius: BorderRadius.circular(10)),
-                    child: Container(
-                      // color: Constants.secondaryColor,
-                      padding: const EdgeInsets.only(bottom: 20, top: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Image.asset(
-                              "assets/icons/user.png",
-                              height: 50,
-                              width: 50,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(
-                              'Sales',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: Constants.outFitMedium),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(
-                              "djskdjf ashdkjh Desum",
-                              style: TextStyle(
-                                  fontFamily: Constants.outFit, fontSize: 15),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            height: 25,
-                            padding: const EdgeInsets.only(left: 10),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Get.to(AdminSalesTargetView());
-                              },
-                              child: Text("View Task"),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Constants.primaryColor,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 10,
-                    right: 10,
-                  ),
-                  width: w / 2,
-                  child: Card(
-                    color: Colors.grey[200],
-                    shape: ContinuousRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    // shape: OutlineInputBorder(
-                    //     // borderSide: BorderSide(color:Colors.grey),
-                    //     borderRadius: BorderRadius.circular(10)),
-                    child: Container(
-                      padding: const EdgeInsets.only(bottom: 25, top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Image.asset(
-                              "assets/icons/user.png",
-                              color: Colors.grey,
-                              height: 50,
-                              width: 50,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(
-                              'Production',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: Constants.outFitMedium),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(
-                              "djskdjf ashdkjh Desum",
-                              style: TextStyle(
-                                  fontFamily: Constants.outFit, fontSize: 15),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            height: 25,
-                            padding: const EdgeInsets.only(left: 10),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text("View Task"),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Constants.primaryColor,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            Container(
+                height: 65,
+                padding:
+                    EdgeInsets.only(left: 10, top: 20, right: 10, bottom: 10),
+                child: OutlineSearchBar(
+                  enableSuggestions: true,
+                  borderColor: Colors.grey,
+                  searchButtonIconColor: Colors.grey,
+                  hintText: "Search",
+                  borderRadius: BorderRadius.circular(10),
+                )),
+            SizedBox(
+              height: 10,
             ),
-            Row(
-              mainAxisAlignment: spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 6,
-                    left: 10,
-                  ),
-                  width: w / 2.05,
-                  child: Card(
-                    color: Colors.grey[200],
-                    shape: ContinuousRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Container(
-                      padding: const EdgeInsets.only(bottom: 25, top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 10,
+            Flexible(
+              fit: FlexFit.tight,
+              flex: 2,
+              child: GridView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: 4,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(
+                        left: 10, right: 10, bottom: 10),
+                    child: Card(
+                      child: GridTile(
+                        header: Container(
+                          padding: EdgeInsets.only(left: 15),
+                          alignment: Alignment.topLeft,
+                          child: Image.asset(
+                            "assets/icons/user.png",
+                            color: Colors.grey,
+                            height: 60,
+                            width: 60,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Image.asset(
-                              "assets/icons/user.png",
-                              color: Colors.grey,
-                              height: 50,
-                              width: 50,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(
-                              'Service',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: Constants.outFitMedium),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(
-                              "djskdjf ashdkjh Desum",
-                              style: TextStyle(
-                                  fontFamily: Constants.outFit, fontSize: 15),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            height: 25,
-                            padding: const EdgeInsets.only(left: 10),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text("View Task"),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Constants.primaryColor,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: ListTile(
+                              title: Text(
+                                controller.items[index],
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontFamily: Constants.outfitBold),
                               ),
+                              subtitle: Text("Lorem Ispum Dior"),
                             ),
-                          )
-                        ],
+                          ),
+                        ),
+                        footer: Container(
+                          padding:
+                              EdgeInsets.only(left: 15, right: 20, bottom: 5),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              print(controller.items[index]);
+                            },
+                            child: Text("View Task"),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Constants.primaryColor,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
+                  );
+                },
+              ),
+            ),
+            Flexible(
+              child: Column(
+                children: [
+                  Text(
+                    "Messages",
+                    style: TextStyle(fontFamily: Constants.outfitBold),
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 6,
-                    right: 10,
+                  Flexible(
+                    child: ListView.builder(
+                        itemBuilder: (BuildContext context, int index) {
+                      return ListTile(
+                        title: Text("Hii"),
+                        subtitle: Text("Sub Title"),
+                        trailing: Icon(CupertinoIcons.bell),
+                      );
+                    }),
                   ),
-                  width: w / 2,
-                  child: Card(
-                    color: Colors.grey[200],
-                    shape: ContinuousRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Container(
-                      padding: const EdgeInsets.only(bottom: 25, top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Image.asset(
-                              "assets/icons/user.png",
-                              color: Colors.grey,
-                              height: 50,
-                              width: 50,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(
-                              'Manager',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: Constants.outFitMedium),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(
-                              "djskdjf ashdkjh Desum",
-                              style: TextStyle(
-                                  fontFamily: Constants.outFit, fontSize: 15),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            height: 25,
-                            padding: const EdgeInsets.only(left: 10),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              child: Text("View Task"),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Constants.primaryColor,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
@@ -324,5 +123,3 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
     );
   }
 }
-
-
