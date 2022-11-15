@@ -142,7 +142,7 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
                                                 build(context);
                                               },
                                               child: Text(
-                                                "Read",
+                                                "Exchange",
                                                 style: TextStyle(
                                                     fontFamily:
                                                         Constants.outFit),
