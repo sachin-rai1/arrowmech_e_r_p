@@ -1,8 +1,8 @@
-import 'package:arrowmech_e_r_p/app/modules/Admin/AdminSalesTarget/views/admin_sales_target_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
+import 'package:velocity_x/velocity_x.dart';
 import '../../../../data/Constant.dart';
 import '../controllers/admin_dash_board_controller.dart';
 
@@ -10,11 +10,12 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
   @override
   Widget build(BuildContext context) {
     Get.put(AdminDashBoardController());
-    // final w = MediaQuery.of(context).size.width;
+    final w = MediaQuery.of(context).size.width;
     // final spaceBetween = MainAxisAlignment.spaceBetween;
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               padding: EdgeInsets.only(left: 15, top: 15),
@@ -39,84 +40,132 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
             SizedBox(
               height: 10,
             ),
-            Flexible(
-              fit: FlexFit.tight,
-              flex: 2,
-              child: GridView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: 4,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(
-                        left: 10, right: 10, bottom: 10),
-                    child: Card(
-                      child: GridTile(
-                        header: Container(
-                          padding: EdgeInsets.only(left: 15),
-                          alignment: Alignment.topLeft,
-                          child: Image.asset(
-                            "assets/icons/user.png",
-                            color: Colors.grey,
-                            height: 60,
-                            width: 60,
-                          ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: ListTile(
-                              title: Text(
-                                controller.items[index],
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontFamily: Constants.outfitBold),
+            Expanded(
+              child: Scaffold(
+                body: ListView.builder(
+                  itemCount: 1,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                          left: 10, right: 10, bottom: 10, top: 10),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Flexible(
+                            fit: FlexFit.loose,
+                            child: GridView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: 4,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
                               ),
-                              subtitle: Text("Lorem Ispum Dior"),
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: Card(
+                                    child: GridTile(
+                                      header: Container(
+                                        padding: EdgeInsets.only(left: 15),
+                                        alignment: Alignment.topLeft,
+                                        child: Image.asset(
+                                          "assets/icons/user.png",
+                                          color: Colors.grey,
+                                          height: 60,
+                                          width: 60,
+                                        ),
+                                      ),
+                                      child: Center(
+                                        child: ListTile(
+                                          title: Text(
+                                            controller.items[index],
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontFamily:
+                                                    Constants.outfitBold),
+                                          ),
+                                          subtitle: Text("Lorem Ispum Dior"),
+                                        ),
+                                      ),
+                                      footer: Container(
+                                        padding: EdgeInsets.only(
+                                            left: 15, right: 20, bottom: 5),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            print(controller.items[index]);
+                                          },
+                                          child: Text("View Task"),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                Constants.primaryColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                           ),
-                        ),
-                        footer: Container(
-                          padding:
-                              EdgeInsets.only(left: 15, right: 20, bottom: 5),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              print(controller.items[index]);
+                          VxBox(
+                                  child: "Messages"
+                                      .text
+                                      .xl
+                                      .fontFamily(Constants.outfitBold)
+                                      .align(TextAlign.start)
+                                      .make())
+                              .alignTopLeft
+                              .px16
+                              .make(),
+                          ListView.builder(
+                            itemBuilder: (context, index) {
+                              return Obx(() {
+                                if (controller.msg.isNotEmpty) {
+                                  return ListTile(
+                                    title: Text(controller.msg[index]),
+                                    subtitle: Text("Sub Title"),
+                                    trailing: Container(
+                                      width: 100,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Icon(CupertinoIcons.bell),
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: Constants.primaryColor,
+                                            ),
+                                              onPressed: () {
+                                                controller.msg.removeAt(index);
+                                                build(context);
+                                              },
+                                              child: Text(
+                                                "Read",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        Constants.outFit),
+                                              )),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                }
+                                return CircularProgressIndicator();
+                              });
                             },
-                            child: Text("View Task"),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Constants.primaryColor,
-                            ),
-                          ),
-                        ),
+                            itemCount: controller.msg.length,
+                            shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                          )
+                        ],
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-            Flexible(
-              child: Column(
-                children: [
-                  Text(
-                    "Messages",
-                    style: TextStyle(fontFamily: Constants.outfitBold),
-                  ),
-                  Flexible(
-                    child: ListView.builder(
-                        itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        title: Text("Hii"),
-                        subtitle: Text("Sub Title"),
-                        trailing: Icon(CupertinoIcons.bell),
-                      );
-                    }),
-                  ),
-                ],
-              ),
-            ),
+            )
           ],
         ),
       ),

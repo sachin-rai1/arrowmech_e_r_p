@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   flutter_localizations: 
     sdk: flutter
+  velocity_x: ^3.6.0
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
