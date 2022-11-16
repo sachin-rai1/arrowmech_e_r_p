@@ -1,3 +1,4 @@
+import 'package:arrowmech_e_r_p/app/data/notificationService.dart';
 import 'package:flutter/animation.dart';
 
 import 'package:get/get.dart';
@@ -101,6 +102,7 @@ class AppPages {
       curve: Curves.linear,
       popGesture: true,
     ),
+
     GetPage(
       name: _Paths.LEAD,
       page: () => LeadView(),

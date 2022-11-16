@@ -6,12 +6,18 @@ import 'package:velocity_x/velocity_x.dart';
 import '../../../../data/Constant.dart';
 import '../controllers/admin_dash_board_controller.dart';
 
-class AdminDashBoardView extends GetView<AdminDashBoardController> {
+class AdminDashBoardView extends StatefulWidget {
+  const AdminDashBoardView({Key? key}) : super(key: key);
+
+  @override
+  State<AdminDashBoardView> createState() => _AdminDashBoardViewState();
+}
+
+class _AdminDashBoardViewState extends State<AdminDashBoardView> {
   @override
   Widget build(BuildContext context) {
     Get.put(AdminDashBoardController());
-    final w = MediaQuery.of(context).size.width;
-    // final spaceBetween = MainAxisAlignment.spaceBetween;
+    AdminDashBoardController adminDashBoardController = Get.find();
     return Scaffold(
       body: Center(
         child: Column(
@@ -57,7 +63,7 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
                             child: GridView.builder(
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
-                              itemCount: 4,
+                              itemCount: adminDashBoardController.items.length,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
@@ -80,7 +86,8 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
                                       child: Center(
                                         child: ListTile(
                                           title: Text(
-                                            controller.items[index],
+                                            adminDashBoardController
+                                                .items[index],
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontFamily:
@@ -91,10 +98,11 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
                                       ),
                                       footer: Container(
                                         padding: EdgeInsets.only(
-                                            left: 15, right: 20, bottom: 5),
+                                            left: 15, right: 15, bottom: 5),
                                         child: ElevatedButton(
                                           onPressed: () {
-                                            print(controller.items[index]);
+                                            print(adminDashBoardController
+                                                .items[index]);
                                           },
                                           child: Text("View Task"),
                                           style: ElevatedButton.styleFrom(
@@ -109,45 +117,62 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
                               },
                             ),
                           ),
-                          VxBox(
-                                  child: "Messages"
-                                      .text
-                                      .xl
-                                      .fontFamily(Constants.outfitBold)
-                                      .align(TextAlign.start)
-                                      .make())
-                              .alignTopLeft
-                              .px16
-                              .make(),
+                          Container(
+                            alignment: Alignment.topLeft,
+                            padding: EdgeInsets.only(left: 10, bottom: 10),
+                            child: Text(
+                              "Messages",
+                              style: TextStyle(
+                                  fontFamily: Constants.outfitBold,
+                                  fontSize: 18),
+                            ),
+                          ),
                           ListView.builder(
                             itemBuilder: (context, index) {
                               return Obx(() {
-                                if (controller.msg.isNotEmpty) {
-                                  return ListTile(
-                                    title: Text(controller.msg[index]),
-                                    subtitle: Text("Sub Title"),
-                                    trailing: Container(
-                                      width: 100,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Icon(CupertinoIcons.bell),
-                                          ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Constants.primaryColor,
-                                            ),
-                                              onPressed: () {
-                                                controller.msg.removeAt(index);
-                                                build(context);
+                                if (adminDashBoardController.msg.isNotEmpty) {
+                                  return Card(
+                                    child: ListTile(
+                                      title: Text(
+                                        adminDashBoardController.msg[index],
+                                        style: TextStyle(
+                                            fontFamily: Constants.outFitMedium,
+                                            fontSize: 16),
+                                      ),
+                                      subtitle: Text("Sub Title"),
+                                      trailing: Container(
+                                        width: 80,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    if(adminDashBoardController.isAlarm[index] == "false"){
+                                                      adminDashBoardController.isAlarm[index] = "true";
+                                                    }else {
+                                                      adminDashBoardController.isAlarm[index] = "false";
+                                                    }
+                                                  });
+                                                  print(adminDashBoardController.isAlarm[index]);
+                                                },
+                                                child: (adminDashBoardController.isAlarm[index].toString() == "true")
+                                                    ? Icon(Icons.doorbell_sharp)
+                                                    : Icon(CupertinoIcons.bell)),
+                                            GestureDetector(
+                                              onTap: () {
+                                                adminDashBoardController.msg
+                                                    .removeAt(index);
+                                                setState(() {});
                                               },
-                                              child: Text(
-                                                "Exchange",
-                                                style: TextStyle(
-                                                    fontFamily:
-                                                        Constants.outFit),
-                                              )),
-                                        ],
+                                              child: Icon(
+                                                CupertinoIcons.envelope,
+                                                color: Constants.primaryColor,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   );
@@ -155,7 +180,7 @@ class AdminDashBoardView extends GetView<AdminDashBoardController> {
                                 return CircularProgressIndicator();
                               });
                             },
-                            itemCount: controller.msg.length,
+                            itemCount: adminDashBoardController.msg.length,
                             shrinkWrap: true,
                             physics: const ClampingScrollPhysics(),
                           )

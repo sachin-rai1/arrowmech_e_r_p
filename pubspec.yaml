@@ -33,6 +33,7 @@ dependencies:
   flutter_localizations: 
     sdk: flutter
   velocity_x: ^3.6.0
+  flutter_local_notifications: ^9.1.4
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

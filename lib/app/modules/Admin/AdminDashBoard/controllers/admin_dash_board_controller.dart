@@ -1,5 +1,3 @@
-
-
 import 'package:get/get.dart';
 
 class AdminDashBoardController extends GetxController {
@@ -7,7 +5,9 @@ class AdminDashBoardController extends GetxController {
   List items  = ['Sales' , 'Production' , 'Service' , 'Manager'];
 
 
-  RxList msg  = ['Sales' , 'Production' , 'Service' , 'Manager'].obs;
+  RxList msg  = ['Sales' , 'Production' , 'Service' , 'Manager' , 'Hii', 'hello'].obs;
+
+  List isAlarm = ["false","false",'false','false','true','true'];
 
 
 

@@ -95,4 +95,5 @@ abstract class _Paths {
   static const ADMIN_STOCK_ITEM = '/admin-stock-item';
   static const ADMIN_LOW_STOCK_ITEM = '/admin-low-stock-item';
   static const ADMIN_VENDORS = '/admin-vendors';
+
 }
