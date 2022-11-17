@@ -17,6 +17,8 @@ class LoginController extends GetxController {
   TextEditingController emailTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
 
+  RxBool isVisible = true.obs;
+
   static Future<void> logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // var status = prefs.getBool('isLoggedIn') ?? false;

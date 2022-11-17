@@ -1,4 +1,5 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../data/Constant.dart';
@@ -95,16 +96,24 @@ class LoginView extends GetView<LoginController> {
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: TextFormField(
-                    validator: (value) =>
-                        value!.isEmpty ? 'Password Required' : null,
-                    controller: controller.passwordTextController,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        hintText: 'Enter password'),
+                  child: Obx(()=>
+                    TextFormField(
+                      obscuringCharacter: '#',
+                      validator: (value) =>
+                          value!.isEmpty ? 'Password Required' : null,
+                      controller: controller.passwordTextController,
+                      obscureText: controller.isVisible.value,
+                      decoration: InputDecoration(
+                          suffixIcon: GestureDetector(
+                            onTap: (){
+                              controller.isVisible.value = !controller.isVisible.value;
+                            },
+                              child: (controller.isVisible.value)?Icon(CupertinoIcons.eye_slash , color:  Constants.primaryColor,):Icon(CupertinoIcons.eye , color:  Constants.primaryColor,)),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          hintText: 'Enter password'),
+                    ),
                   ),
                 ),
                 const SizedBox(
