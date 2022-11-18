@@ -1,8 +1,8 @@
 import 'package:arrowmech_e_r_p/app/data/Constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
-import '../../Navigation/navigationDrawer.dart';
+import 'package:map_location_picker/map_location_picker.dart';
+import 'package:velocity_x/velocity_x.dart';
 import '../controllers/lead_controller.dart';
 
 class LeadView extends GetView<LeadController> {
@@ -10,6 +10,7 @@ class LeadView extends GetView<LeadController> {
   Widget build(BuildContext context) {
     Get.put(LeadController());
     var w = MediaQuery.of(context).size.width;
+    var h = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         // drawer: LeadNavigationDrawer(),
@@ -69,7 +70,8 @@ class LeadView extends GetView<LeadController> {
                           child: Text(
                             "Name",
                             style: TextStyle(
-                                fontFamily: Constants.outFitMedium, fontSize: 16),
+                                fontFamily: Constants.outFitMedium,
+                                fontSize: 16),
                           )),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,7 +82,8 @@ class LeadView extends GetView<LeadController> {
                             width: w / 2.2,
                             child: TextFormField(
                               decoration: InputDecoration(
-                                  hintStyle: TextStyle(color: Colors.brown[100]),
+                                  hintStyle:
+                                      TextStyle(color: Colors.brown[100]),
                                   contentPadding: EdgeInsets.only(left: 10),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5),
@@ -94,7 +97,8 @@ class LeadView extends GetView<LeadController> {
                             width: w / 2.2,
                             child: TextFormField(
                               decoration: InputDecoration(
-                                  hintStyle: TextStyle(color: Colors.brown[100]),
+                                  hintStyle:
+                                      TextStyle(color: Colors.brown[100]),
                                   contentPadding: EdgeInsets.only(left: 10),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5),
@@ -124,7 +128,8 @@ class LeadView extends GetView<LeadController> {
                           child: Text(
                             "Company Details",
                             style: TextStyle(
-                                fontFamily: Constants.outFitMedium, fontSize: 16),
+                                fontFamily: Constants.outFitMedium,
+                                fontSize: 16),
                           )),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -135,7 +140,8 @@ class LeadView extends GetView<LeadController> {
                             width: w / 2.2,
                             child: TextFormField(
                               decoration: InputDecoration(
-                                  hintStyle: TextStyle(color: Colors.brown[100]),
+                                  hintStyle:
+                                      TextStyle(color: Colors.brown[100]),
                                   contentPadding: EdgeInsets.only(left: 10),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5),
@@ -149,7 +155,8 @@ class LeadView extends GetView<LeadController> {
                             width: w / 2.2,
                             child: TextFormField(
                               decoration: InputDecoration(
-                                  hintStyle: TextStyle(color: Colors.brown[100]),
+                                  hintStyle:
+                                      TextStyle(color: Colors.brown[100]),
                                   contentPadding: EdgeInsets.only(left: 10),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5),
@@ -167,7 +174,8 @@ class LeadView extends GetView<LeadController> {
                           maxLines: 50,
                           decoration: InputDecoration(
                               hintStyle: TextStyle(color: Colors.brown[100]),
-                              contentPadding: EdgeInsets.only(left: 10, top: 10),
+                              contentPadding:
+                                  EdgeInsets.only(left: 10, top: 10),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
                               ),
@@ -183,7 +191,8 @@ class LeadView extends GetView<LeadController> {
                             width: w / 2.2,
                             child: TextFormField(
                               decoration: InputDecoration(
-                                  hintStyle: TextStyle(color: Colors.brown[100]),
+                                  hintStyle:
+                                      TextStyle(color: Colors.brown[100]),
                                   contentPadding: EdgeInsets.only(left: 10),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5),
@@ -197,7 +206,8 @@ class LeadView extends GetView<LeadController> {
                             width: w / 2.2,
                             child: TextFormField(
                               decoration: InputDecoration(
-                                  hintStyle: TextStyle(color: Colors.brown[100]),
+                                  hintStyle:
+                                      TextStyle(color: Colors.brown[100]),
                                   contentPadding: EdgeInsets.only(left: 10),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5),
@@ -287,12 +297,43 @@ class LeadView extends GetView<LeadController> {
                   ),
                 ),
               ),
+              10.heightBox,
               Container(
-                  height: 200,
+                  height: h/2,
                   width: w / 1.1,
-                  decoration: BoxDecoration(border: Border.all()),
-                  child: Center(child: Text("Google Maps"))),
+
+                  child: MapLocationPicker(
+                    padding: EdgeInsets.all(10),
+                    bottomCardColor: Colors.white,
+                    topCardColor: Colors.white,
+                    borderRadius: BorderRadius.circular(50),
+                    searchController: controller.mapController,
+                    showBackButton: false,
+                    compassEnabled: true,
+                    apiKey: Constants.apiString,
+                    onNext: (GeocodingResult? result) {
+                      Obx(() {
+                        if (result != null) {
+                          controller.autoCompletePlace.value =
+                              result.formattedAddress!;
+                        }
+                        return Container();
+                      });
+                    },
+                    currentLatLng: const LatLng(29.121599, 76.396698),
+                    canPopOnNextButtonTaped: true,
+                    onSuggestionSelected: (PlacesDetailsResponse? result) {
+                      Obx(() {
+                        if (result != null) {
+                          controller.autoCompletePlace.value =
+                              result.result.formattedAddress!;
+                        }
+                        return Container();
+                      });
+                    },
+                  )),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
                     padding: EdgeInsets.only(top: 10, left: 20),
@@ -305,7 +346,8 @@ class LeadView extends GetView<LeadController> {
                         children: [
                           Text(
                             "Start Trip",
-                            style: TextStyle(fontFamily: Constants.outFitMedium),
+                            style:
+                                TextStyle(fontFamily: Constants.outFitMedium),
                           ),
                           // SizedBox(width: 5,),
                           // Icon(Icons.add_circle_outline),
@@ -315,9 +357,7 @@ class LeadView extends GetView<LeadController> {
                           backgroundColor: Constants.primaryColor),
                     ),
                   ),
-                  SizedBox(
-                    width: 50,
-                  ),
+                  20.heightBox,
                   Container(
                     padding: EdgeInsets.only(top: 10),
                     height: 35,
@@ -329,7 +369,8 @@ class LeadView extends GetView<LeadController> {
                         children: [
                           Text(
                             "End Trip",
-                            style: TextStyle(fontFamily: Constants.outFitMedium),
+                            style:
+                                TextStyle(fontFamily: Constants.outFitMedium),
                           ),
                           SizedBox(
                             width: 5,
@@ -343,6 +384,7 @@ class LeadView extends GetView<LeadController> {
                   ),
                 ],
               ),
+
             ],
           ),
         ),

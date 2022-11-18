@@ -80,6 +80,7 @@ class AdminServiceView extends GetView<AdminServiceController> {
                 padding:
                 EdgeInsets.only(left: 10, top: 20, right: 10, bottom: 10),
                 child: OutlineSearchBar(
+                enableSuggestions: true,
                   borderColor: Colors.grey,
                   searchButtonIconColor: Colors.grey,
                   hintText: "Search",

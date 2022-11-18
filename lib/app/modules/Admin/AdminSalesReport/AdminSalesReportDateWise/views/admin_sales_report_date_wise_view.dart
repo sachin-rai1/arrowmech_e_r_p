@@ -422,154 +422,155 @@ class AdminSalesReportDateWiseView
                       padding: EdgeInsets.only(left: 20, bottom: 10),
                     ),
                     Container(
-                      height: h,
-                      width: w / 1.1,
-                      // decoration: BoxDecoration(
-                      //   border: Border.all(),
-                      //   borderRadius: BorderRadius.circular(10),
-                      // ),
-                      child: Center(
-                          child: Scaffold(
-                        body: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            PlacesAutocomplete(
-                                searchController: controller.mapController,
-                                apiKey: Constants.apiString,
-                                mounted: GetPlatform.isAndroid,
-                                showBackButton: false,
-                                onGetDetailsByPlaceId:
-                                    (PlacesDetailsResponse? result) {
-                                  Obx(() {
-                                    if (result != null) {
-                                      controller.autoCompletePlace.value =
-                                          result.result.formattedAddress!;
-                                    }
-                                    return Text("");
-                                  });
-                                  const Spacer();
-                                  const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Google Map Location Picker\nMade By Arvind 😃 with Flutter 🚀",
-                                      textAlign: TextAlign.center,
-                                      textScaleFactor: 1.2,
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  );
-                                  TextButton(
-                                    onPressed: () => Clipboard.setData(
-                                      const ClipboardData(
-                                          text: "https://www.mohesu.com"),
-                                    ).then(
-                                      (value) => ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(
-                                          content: Text("Copied to Clipboard"),
-                                        ),
-                                      ),
-                                    ),
-                                    child: const Text("https://www.mohesu.com"),
-                                  );
-                                  const Spacer();
-                                  Center(
-                                    child: ElevatedButton(
-                                      child: const Text('Pick location'),
-                                      onPressed: () async {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) {
-                                              return MapLocationPicker(
-                                                apiKey:
-                                                    Constants.apiString,
-                                                canPopOnNextButtonTaped: true,
-                                                currentLatLng: const LatLng(
-                                                    29.121599, 76.396698),
-                                                onNext:
-                                                    (GeocodingResult? result) {
-                                                  Obx(() {
-                                                    if (result != null) {
-                                                      controller
-                                                              .autoCompletePlace
-                                                              .value =
-                                                          result
-                                                              .formattedAddress!;
-                                                    }
-                                                    return Text("");
-                                                  });
-                                                },
-                                                onSuggestionSelected:
-                                                    (PlacesDetailsResponse?
-                                                        result) {
-                                                  Obx(() {
-                                                    if (result != null) {
-                                                      controller
-                                                              .autoCompletePlace
-                                                              .value =
-                                                          result.result
-                                                              .formattedAddress!;
-                                                    }
-                                                    return Text("");
-                                                  });
-                                                },
-                                              );
-                                            },
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  );
-
-                                  const Spacer();
-                                  ListTile(
-                                    title: Text("Geocoded Address:"),
-                                  );
-                                  ListTile(
-                                    title: Text("Autocomplete Address:"),
-                                  );
-                                  const Spacer(
-                                    flex: 3,
-                                  );
-                                })
-                          ],
-                        ),
-                      )),
-                    ),
-                    // child: MapLocationPicker(
-                    // padding: EdgeInsets.all(10),
-                    //   bottomCardColor: Colors.redAccent,
-                    //   topCardColor: Colors.redAccent,
-                    //   borderRadius: BorderRadius.circular(50),
-                    //   // searchController: controller.mapController,
-                    //   showBackButton: false,
-                    //   compassEnabled: true,
-                    //   apiKey: Constants.apiString,
-                    //   onNext: (GeocodingResult? result) {
-                    //     Obx(() {
-                    //       if (result != null) {
-                    //         controller.autoCompletePlace.value =
-                    //             result.formattedAddress!;
-                    //       }
-                    //       return Container();
-                    //     });
-                    //   },
-                    //   currentLatLng: const LatLng(29.121599, 76.396698),
-                    //   canPopOnNextButtonTaped: true,
-                    //   onSuggestionSelected:
-                    //       (PlacesDetailsResponse? result) {
-                    //     Obx(() {
-                    //       if (result != null) {
-                    //         controller.autoCompletePlace.value =
-                    //             result.result.formattedAddress!;
-                    //       }
-                    //       return Container();
-                    //     });
-                    //   },
-                    // ),
+                        height: h,
+                        width: w / 1.1,
+                        // decoration: BoxDecoration(
+                        //   border: Border.all(),
+                        //   borderRadius: BorderRadius.circular(10),
+                        // ),
+                        child: Center(
+                          //       child: Scaffold(
+                          //     body: Column(
+                          //       mainAxisAlignment: MainAxisAlignment.center,
+                          //       crossAxisAlignment: CrossAxisAlignment.center,
+                          //       children: [
+                          //         PlacesAutocomplete(
+                          //             searchController: controller.mapController,
+                          //             apiKey: Constants.apiString,
+                          //             mounted: GetPlatform.isAndroid,
+                          //             showBackButton: false,
+                          //             onGetDetailsByPlaceId:
+                          //                 (PlacesDetailsResponse? result) {
+                          //               Obx(() {
+                          //                 if (result != null) {
+                          //                   controller.autoCompletePlace.value =
+                          //                       result.result.formattedAddress!;
+                          //                 }
+                          //                 return Text("");
+                          //               });
+                          //               const Spacer();
+                          //               const Padding(
+                          //                 padding: EdgeInsets.all(8.0),
+                          //                 child: Text(
+                          //                   "Google Map Location Picker\nMade By Arvind 😃 with Flutter 🚀",
+                          //                   textAlign: TextAlign.center,
+                          //                   textScaleFactor: 1.2,
+                          //                   style: TextStyle(
+                          //                     color: Colors.grey,
+                          //                   ),
+                          //                 ),
+                          //               );
+                          //               TextButton(
+                          //                 onPressed: () => Clipboard.setData(
+                          //                   const ClipboardData(
+                          //                       text: "https://www.mohesu.com"),
+                          //                 ).then(
+                          //                   (value) => ScaffoldMessenger.of(context)
+                          //                       .showSnackBar(
+                          //                     const SnackBar(
+                          //                       content: Text("Copied to Clipboard"),
+                          //                     ),
+                          //                   ),
+                          //                 ),
+                          //                 child: const Text("https://www.mohesu.com"),
+                          //               );
+                          //               const Spacer();
+                          //               Center(
+                          //                 child: ElevatedButton(
+                          //                   child: const Text('Pick location'),
+                          //                   onPressed: () async {
+                          //                     Navigator.push(
+                          //                       context,
+                          //                       MaterialPageRoute(
+                          //                         builder: (context) {
+                          //                           return MapLocationPicker(
+                          //                             apiKey:
+                          //                                 Constants.apiString,
+                          //                             canPopOnNextButtonTaped: true,
+                          //                             currentLatLng: const LatLng(
+                          //                                 29.121599, 76.396698),
+                          //                             onNext:
+                          //                                 (GeocodingResult? result) {
+                          //                               Obx(() {
+                          //                                 if (result != null) {
+                          //                                   controller
+                          //                                           .autoCompletePlace
+                          //                                           .value =
+                          //                                       result
+                          //                                           .formattedAddress!;
+                          //                                 }
+                          //                                 return Text("");
+                          //                               });
+                          //                             },
+                          //                             onSuggestionSelected:
+                          //                                 (PlacesDetailsResponse?
+                          //                                     result) {
+                          //                               Obx(() {
+                          //                                 if (result != null) {
+                          //                                   controller
+                          //                                           .autoCompletePlace
+                          //                                           .value =
+                          //                                       result.result
+                          //                                           .formattedAddress!;
+                          //                                 }
+                          //                                 return Text("");
+                          //                               });
+                          //                             },
+                          //                           );
+                          //                         },
+                          //                       ),
+                          //                     );
+                          //                   },
+                          //                 ),
+                          //               );
+                          //
+                          //               const Spacer();
+                          //               ListTile(
+                          //                 title: Text("Geocoded Address:"),
+                          //               );
+                          //               ListTile(
+                          //                 title: Text("Autocomplete Address:"),
+                          //               );
+                          //               const Spacer(
+                          //                 flex: 3,
+                          //               );
+                          //             })
+                          //       ],
+                          //     ),
+                          //   )),
+                          // ),
+                          child: MapLocationPicker(
+                            padding: EdgeInsets.all(10),
+                            bottomCardColor: Colors.white,
+                            topCardColor: Colors.white,
+                            borderRadius: BorderRadius.circular(50),
+                            searchController: controller.mapController,
+                            showBackButton: false,
+                            compassEnabled: true,
+                            apiKey: Constants.apiString,
+                            onNext: (GeocodingResult? result) {
+                              Obx(() {
+                                if (result != null) {
+                                  controller.autoCompletePlace.value =
+                                      result.formattedAddress!;
+                                }
+                                return Container();
+                              });
+                            },
+                            currentLatLng: const LatLng(29.121599, 76.396698),
+                            canPopOnNextButtonTaped: true,
+                            onSuggestionSelected:
+                                (PlacesDetailsResponse? result) {
+                              Obx(() {
+                                if (result != null) {
+                                  controller.autoCompletePlace.value =
+                                      result.result.formattedAddress!;
+                                }
+                                return Container();
+                              });
+                            },
+                          ),
+                        ))
                   ])),
               Row(
                 children: [

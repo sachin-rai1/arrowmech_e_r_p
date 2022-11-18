@@ -98,7 +98,7 @@ class LoginView extends GetView<LoginController> {
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Obx(()=>
                     TextFormField(
-                      obscuringCharacter: '#',
+                      obscuringCharacter: '&',
                       validator: (value) =>
                           value!.isEmpty ? 'Password Required' : null,
                       controller: controller.passwordTextController,

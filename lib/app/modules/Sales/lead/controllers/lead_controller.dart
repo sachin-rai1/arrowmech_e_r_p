@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LeadController extends GetxController {
@@ -11,6 +12,13 @@ class LeadController extends GetxController {
   ].obs;
 
   final selected = "".obs;
+
+  RxString address = ''.obs;
+  final TextEditingController mapController = TextEditingController();
+  RxString autoCompletePlace = ''.obs;
+
+
+  var date = Get.arguments;
 
 
 }

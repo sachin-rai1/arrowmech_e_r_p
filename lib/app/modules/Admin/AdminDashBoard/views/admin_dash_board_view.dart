@@ -1,19 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:outline_search_bar/outline_search_bar.dart';
 import 'package:velocity_x/velocity_x.dart';
 import '../../../../data/Constant.dart';
 import '../controllers/admin_dash_board_controller.dart';
 
 class AdminDashBoardView extends StatefulWidget {
-  const AdminDashBoardView({Key? key}) : super(key: key);
+  AdminDashBoardView({Key? key}) : super(key: key);
 
   @override
   State<AdminDashBoardView> createState() => _AdminDashBoardViewState();
 }
 
 class _AdminDashBoardViewState extends State<AdminDashBoardView> {
+  static List items = ['Sales', 'Production', 'Service', 'Manager'];
+  List abc = List.from(items);
+
+  void updatelist(String value) {
+    setState(() {
+      abc = items.where((element) => items.contains(value.toString())).toList();
+      print(abc);
+      print(value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Get.put(AdminDashBoardController());
@@ -32,20 +42,26 @@ class _AdminDashBoardViewState extends State<AdminDashBoardView> {
                     TextStyle(fontSize: 18, fontFamily: Constants.outfitBold),
               ),
             ),
+            10.heightBox,
             Container(
-                height: 65,
-                padding:
-                    EdgeInsets.only(left: 10, top: 20, right: 10, bottom: 10),
-                child: OutlineSearchBar(
-                  enableSuggestions: true,
-                  borderColor: Colors.grey,
-                  searchButtonIconColor: Colors.grey,
-                  hintText: "Search",
-                  borderRadius: BorderRadius.circular(10),
-                )),
-            SizedBox(
-              height: 10,
+              padding: EdgeInsets.only(left: 15,right: 15 ),
+              height: 40,
+              child: TextFormField(
+                onChanged: (value) => updatelist(value),
+                decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(left: 10),
+                    suffixIcon: GestureDetector(
+                        child: Icon(
+                      CupertinoIcons.search,
+                      color: Constants.primaryColor,
+                    )),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    hintText: 'Search'),
+              ),
             ),
+
             Expanded(
               child: Scaffold(
                 body: ListView.builder(
@@ -63,7 +79,7 @@ class _AdminDashBoardViewState extends State<AdminDashBoardView> {
                             child: GridView.builder(
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
-                              itemCount: adminDashBoardController.items.length,
+                              itemCount: adminDashBoardController.abc.length,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
@@ -86,8 +102,7 @@ class _AdminDashBoardViewState extends State<AdminDashBoardView> {
                                       child: Center(
                                         child: ListTile(
                                           title: Text(
-                                            adminDashBoardController
-                                                .items[index],
+                                            adminDashBoardController.abc[index],
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 fontFamily:
@@ -102,7 +117,7 @@ class _AdminDashBoardViewState extends State<AdminDashBoardView> {
                                         child: ElevatedButton(
                                           onPressed: () {
                                             print(adminDashBoardController
-                                                .items[index]);
+                                                .abc[index]);
                                           },
                                           child: Text("View Task"),
                                           style: ElevatedButton.styleFrom(
@@ -149,17 +164,28 @@ class _AdminDashBoardViewState extends State<AdminDashBoardView> {
                                             GestureDetector(
                                                 onTap: () {
                                                   setState(() {
-                                                    if(adminDashBoardController.isAlarm[index] == "false"){
-                                                      adminDashBoardController.isAlarm[index] = "true";
-                                                    }else {
-                                                      adminDashBoardController.isAlarm[index] = "false";
+                                                    if (adminDashBoardController
+                                                            .isAlarm[index] ==
+                                                        "false") {
+                                                      adminDashBoardController
+                                                              .isAlarm[index] =
+                                                          "true";
+                                                    } else {
+                                                      adminDashBoardController
+                                                              .isAlarm[index] =
+                                                          "false";
                                                     }
                                                   });
-                                                  print(adminDashBoardController.isAlarm[index]);
+                                                  print(adminDashBoardController
+                                                      .isAlarm[index]);
                                                 },
-                                                child: (adminDashBoardController.isAlarm[index].toString() == "true")
+                                                child: (adminDashBoardController
+                                                            .isAlarm[index]
+                                                            .toString() ==
+                                                        "true")
                                                     ? Icon(Icons.doorbell_sharp)
-                                                    : Icon(CupertinoIcons.bell)),
+                                                    : Icon(
+                                                        CupertinoIcons.bell)),
                                             GestureDetector(
                                               onTap: () {
                                                 adminDashBoardController.msg
